@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FinVista — See Your Financial Future</title>
+  <meta name="description" content="FinVista is a free, AI-powered personal finance platform: track spending, forecast expenses, plan budgets, ask an AI advisor and compare Indian tax regimes. No bank login needed.">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <meta property="og:title" content="FinVista — See Your Financial Future">
+  <meta property="og:image" content="/assets/brand/finvista-logo-original.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body class="home">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="site-header site-header--glass">
+    <div class="container">
+      <a class="brand" href="/" aria-label="FinVista home"><img class="brand__logo" src="/assets/brand/finvista-wordmark.png" alt="FinVista" width="451" height="144"></a>
+      <button class="btn btn--ghost btn--icon nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#advisor">AI advisor</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#security">Security</a>
+        <a href="#faq">FAQ</a>
+        <div class="nav__cta">
+          <a class="btn btn--ghost btn--sm" href="/login.html" data-guest-only>Log in</a>
+          <a class="btn btn--primary btn--sm" href="/register.html" data-guest-only>Sign up free</a>
+          <a class="btn btn--primary btn--sm hidden" href="/dashboard.html" data-user-only>Open dashboard</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Hero ============ -->
+    <section class="h-hero">
+      <div class="container h-hero__grid">
+        <div class="h-hero__copy">
+          <a class="h-pill" href="/register.html" data-guest-only><span class="h-pill__tag">Free</span> No card. No bank login. <span aria-hidden="true">→</span></a>
+          <h1 class="h-hero__title">See your<br class="h-br"> financial <span class="h-shine">future</span>,<br> not just your past.</h1>
+          <p class="h-hero__lead">FinVista turns everyday income and spending into forecasts, budgets, a health score and plain-language advice from AI. It all runs on the numbers <em>you</em> choose to add.</p>
+
+          <div class="h-hero__actions">
+            <a class="btn btn--primary btn--lg h-btn-glow" href="/register.html" data-guest-only>Create your free account <span aria-hidden="true">→</span></a>
+            <a class="btn btn--primary btn--lg h-btn-glow hidden" href="/dashboard.html" data-user-only>Open your dashboard <span aria-hidden="true">→</span></a>
+            <a class="btn btn--secondary btn--lg" href="/dashboard.html?preview=1">See a sample dashboard</a>
+          </div>
+
+          <ul class="h-trust" aria-label="Why FinVista">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3 3 7-7"/></svg>Free to use</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3 3 7-7"/></svg>Never asks for bank passwords</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3 3 7-7"/></svg>7 currencies</li>
+          </ul>
+        </div>
+
+        <!-- Product visual: pure markup, sample figures only -->
+        <div class="h-visual" role="img" aria-label="Illustrative preview of FinVista with sample figures: a monthly chart with a forecast, a health score, an AI advisor tip and an unusual-spending flag.">
+          <div class="h-window">
+            <div class="h-window__bar"><span></span><span></span><span></span><b>Dashboard · November</b></div>
+            <div class="h-kpis">
+              <div class="h-kpi"><small>Income</small><b>₹88,000</b><i class="up">+4.2%</i></div>
+              <div class="h-kpi"><small>Spent</small><b>₹62,400</b><i class="down">−6.1%</i></div>
+              <div class="h-kpi"><small>Saved</small><b>29.1%</b><i class="up">+3.8 pts</i></div>
+            </div>
+            <div class="h-chart">
+              <svg viewBox="0 0 320 130" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="hArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity="0.45"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient>
+                  <linearGradient id="hLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+                </defs>
+                <g class="h-grid"><line x1="0" y1="32" x2="320" y2="32"/><line x1="0" y1="65" x2="320" y2="65"/><line x1="0" y1="98" x2="320" y2="98"/></g>
+                <path class="h-area" d="M0 92 C30 84 45 70 70 74 S115 52 140 58 S185 40 210 46 L240 40 L240 130 L0 130 Z"/>
+                <path class="h-line" d="M0 92 C30 84 45 70 70 74 S115 52 140 58 S185 40 210 46 L240 40"/>
+                <path class="h-forecast" d="M240 40 C262 36 285 30 320 24"/>
+                <circle class="h-dot" cx="240" cy="40" r="4"/>
+              </svg>
+              <span class="h-chart__label">Forecast</span>
+            </div>
+          </div>
+
+          <div class="h-float h-float--score">
+            <div class="h-ring" aria-hidden="true">
+              <svg viewBox="0 0 44 44"><circle class="h-ring__track" cx="22" cy="22" r="18"/><circle class="h-ring__val" cx="22" cy="22" r="18"/></svg>
+              <b>78</b>
+            </div>
+            <div><small>Health score</small><strong>Good</strong></div>
+          </div>
+
+          <div class="h-float h-float--ai">
+            <span class="h-avatar" aria-hidden="true">✦</span>
+            <p><small>AI advisor</small>Dining is up 18% on last month. Trimming ₹2,000 keeps you on track for your goal.</p>
+          </div>
+
+          <div class="h-float h-float--flag">
+            <span class="h-flag" aria-hidden="true">!</span>
+            <p><small>Worth a look</small>₹12,400 on Electronics, about 3× your usual.</p>
+          </div>
+
+          <span class="h-sample">Sample data</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tool marquee ============ -->
+    <section class="h-marquee" aria-label="Tools included">
+      <div class="h-marquee__track">
+        <ul>
+          <li>Live dashboard</li><li>Smart categories</li><li>Spending forecasts</li><li>Unusual-spend checks</li><li>Budgets &amp; alerts</li><li>What-if simulator</li><li>AI advisor</li><li>Tax regime compare</li><li>Health score</li><li>Monthly reports</li><li>SIPs &amp; insurance</li><li>CSV import</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>Live dashboard</li><li>Smart categories</li><li>Spending forecasts</li><li>Unusual-spend checks</li><li>Budgets &amp; alerts</li><li>What-if simulator</li><li>AI advisor</li><li>Tax regime compare</li><li>Health score</li><li>Monthly reports</li><li>SIPs &amp; insurance</li><li>CSV import</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Facts ============ -->
+    <section class="section h-facts-wrap">
+      <div class="container">
+        <dl class="h-facts reveal">
+          <div><dt>Tools in one place</dt><dd><span data-count="12">12</span></dd></div>
+          <div><dt>Currencies supported</dt><dd><span data-count="7">7</span></dd></div>
+          <div><dt>Bank logins required</dt><dd>0</dd></div>
+          <div><dt>Cost to use</dt><dd>Free</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ Bento features ============ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="h-head reveal">
+          <span class="eyebrow">Features</span>
+          <h2>One app for the whole picture of your money</h2>
+          <p>Record, understand and plan in one place. Every number comes from your own transactions and is worked out by tested code you can see.</p>
+        </div>
+
+        <div class="bento">
+          <article class="tile tile--wide reveal">
+            <div class="tile__text">
+              <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg></span>
+              <h3>Dashboard &amp; analytics</h3>
+              <p>Income, spending, savings rate and budget use at a glance, with charts you can filter by month, category or custom range.</p>
+            </div>
+            <div class="tile__viz viz-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+
+          <article class="tile reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg></span>
+            <h3>AI financial advisor</h3>
+            <p>Ask "where did my money go?" and get a plain answer based on your real figures.</p>
+            <div class="viz-chat" aria-hidden="true"><span>Can I afford a ₹40k trip?</span><span>Yes, by May if you keep saving ₹9k a month.</span></div>
+          </article>
+
+          <article class="tile reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span>
+            <h3>Spending forecast</h3>
+            <p>See what next month is likely to cost, always clearly marked as an estimate.</p>
+            <svg class="viz-line" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48 C25 44 40 30 70 34 S120 18 140 22"/><path class="dash" d="M140 22 C160 18 180 14 200 10"/></svg>
+          </article>
+
+          <article class="tile reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4m0 3v.01"/></svg></span>
+            <h3>Unusual-spend checks</h3>
+            <p>Statistical checks highlight spikes and explain why. A flag is a nudge to look, never an accusation.</p>
+          </article>
+
+          <article class="tile reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg></span>
+            <h3>Budgets &amp; what-if</h3>
+            <p>Set limits, get alerts before you overspend, and test "what if I cut X?" without touching real records.</p>
+            <div class="viz-progress" aria-hidden="true"><span><i class="p62"></i></span><span><i class="p88 warn"></i></span><span><i class="p40"></i></span></div>
+          </article>
+
+          <article class="tile tile--wide reveal">
+            <div class="tile__text">
+              <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM9 12h7M9 16h7M9 8h3"/></svg></span>
+              <h3>Indian tax, old vs new regime <span class="tile__chip">INR accounts</span></h3>
+              <p>Enter your salary and deductions to see both regimes side by side, with every slab and rebate shown. The maths is fixed code, never AI.</p>
+            </div>
+            <div class="tile__viz viz-compare" aria-hidden="true">
+              <div><small>Old regime</small><span><i class="c-old"></i></span><b>₹1,12,320</b></div>
+              <div><small>New regime</small><span><i class="c-new"></i></span><b>₹78,000</b></div>
+              <em>Sample figures</em>
+            </div>
+          </article>
+
+          <article class="tile reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-4.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 6.5-8 11-8 11z"/></svg></span>
+            <h3>Financial health score</h3>
+            <p>One explainable score from your savings, budget habits and steady spending, with the working shown.</p>
+          </article>
+
+          <article class="tile tile--strip reveal">
+            <span class="tile__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></span>
+            <div>
+              <h3>And the everyday essentials</h3>
+              <p>Everything else you need to keep your records tidy.</p>
+            </div>
+            <ul class="tile__tags">
+              <li>Monthly reports</li><li>CSV import &amp; export</li><li>SIP tracking</li><li>Insurance &amp; due dates</li><li>Custom category rules</li><li>What-if simulator</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AI advisor spotlight ============ -->
+    <section class="section" id="advisor">
+      <div class="container h-split">
+        <div class="reveal">
+          <span class="eyebrow">AI advisor</span>
+          <h2>Ask about your money like you'd ask a friend</h2>
+          <p class="lead">The advisor reads a summary of your own figures and explains them in plain language. Calculations come from tested code. The AI explains them and never makes up numbers.</p>
+          <ul class="h-bullets">
+            <li>Grounded in your transactions, budgets and goals</li>
+            <li>Says so when it doesn't have enough data</li>
+            <li>Runs on our server, so the AI key never reaches your browser</li>
+          </ul>
+        </div>
+        <div class="chat reveal" data-chat aria-label="Example conversation with the AI advisor">
+          <div class="chat__head"><span class="h-avatar" aria-hidden="true">✦</span><div><strong>FinVista Advisor</strong><small>Example conversation</small></div></div>
+          <div class="chat__msg chat__msg--me">Why was this month so expensive?</div>
+          <div class="chat__msg chat__msg--ai">Spending was ₹62,400, about ₹7,800 above your 3-month average. Most of it is one ₹12,400 electronics purchase and dining up 18%. Without the one-off, you were close to normal.</div>
+          <div class="chat__msg chat__msg--me">How do I save ₹5,000 more next month?</div>
+          <div class="chat__msg chat__msg--ai">Bringing dining back to your usual ₹6,500 frees about ₹2,000. Pausing two unused subscriptions adds ₹1,100. Capping shopping at ₹4,000 covers the rest.</div>
+          <div class="chat__typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ How it works ============ -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="h-head h-head--center reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>From sign-up to clarity in three steps</h2>
+        </div>
+        <ol class="flow">
+          <li class="reveal"><span class="flow__n">1</span><h3>Create a free account</h3><p>Just a name, email and password. Pick your currency, with no card and no bank connection.</p></li>
+          <li class="reveal"><span class="flow__n">2</span><h3>Add or import transactions</h3><p>Type them in or import a CSV. Categories are suggested for you, and you can change any of them.</p></li>
+          <li class="reveal"><span class="flow__n">3</span><h3>See insights instantly</h3><p>Trends, forecasts, budgets, your health score and an advisor ready to answer questions.</p></li>
+        </ol>
+        <div class="h-center reveal">
+          <a class="btn btn--primary btn--lg h-btn-glow" href="/register.html" data-guest-only>Get started free <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Currencies ============ -->
+    <section class="section h-currency">
+      <div class="container">
+        <div class="h-currency__box reveal">
+          <div>
+            <span class="eyebrow">Works where you do</span>
+            <h2>Seven currencies, one clear view</h2>
+            <p>Choose your currency when you sign up and change it any time. The Indian tax tool is available for INR accounts.</p>
+          </div>
+          <ul class="coins" aria-label="Supported currencies">
+            <li><b>₹</b>INR</li><li><b>$</b>USD</li><li><b>€</b>EUR</li><li><b>£</b>GBP</li><li><b>C$</b>CAD</li><li><b>A$</b>AUD</li><li><b>¥</b>JPY</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Security ============ -->
+    <section class="section" id="security">
+      <div class="container">
+        <div class="h-head h-head--center reveal">
+          <span class="eyebrow">Security &amp; privacy</span>
+          <h2>Built so your data stays yours</h2>
+          <p>A few firm rules mean you never hand over more than you want to.</p>
+        </div>
+        <div class="shield-grid">
+          <article class="shield reveal"><span class="shield__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5z"/></svg></span><h3>No bank logins, ever</h3><p>FinVista never asks for banking passwords or credentials. You decide what to record.</p></article>
+          <article class="shield reveal"><span class="shield__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h3>Your records stay separate</h3><p>Every request is scoped to your account, so no one else can see your data.</p></article>
+          <article class="shield reveal"><span class="shield__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Hashed passwords</h3><p>Passwords are hashed with scrypt, sessions are protected, and requests are checked and rate limited.</p></article>
+          <article class="shield reveal"><span class="shield__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4m0 12v4M4.9 4.9l2.8 2.8m8.6 8.6l2.8 2.8M2 12h4m12 0h4"/></svg></span><h3>AI explains, code calculates</h3><p>Tax, forecasts and scores come from tested code. The AI only explains your figures.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container h-faq">
+        <div class="h-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions, answered</h2>
+          <p>Still unsure? Make an account and look around. It's free.</p>
+        </div>
+        <div class="faq reveal">
+          <details><summary>Is FinVista really free?</summary><p>Yes. Creating an account and using every tool costs nothing, and you never enter card details.</p></details>
+          <details><summary>Do I have to connect my bank?</summary><p>No, and FinVista will never ask for bank passwords. You add transactions yourself or import a CSV you exported.</p></details>
+          <details><summary>Is the AI advice financial advice?</summary><p>No. The advisor explains your numbers and suggests ideas, but it isn't a licensed advisor. Predictions and tax figures are estimates.</p></details>
+          <details><summary>Can I use it outside India?</summary><p>Yes. Pick USD, EUR, GBP, CAD, AUD or JPY. Everything works except the Indian tax tool, which follows Indian rules and is only for INR accounts.</p></details>
+          <details><summary>Can I delete my data?</summary><p>Any time, from the Account page. Deleting your account permanently removes all of your records.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Final CTA ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="h-cta reveal">
+          <h2>Your financial future starts with one click</h2>
+          <p class="lead">Create your free account and get your first insights in minutes.</p>
+          <div class="h-hero__actions h-hero__actions--center">
+            <a class="btn btn--primary btn--lg h-btn-glow" href="/register.html" data-guest-only>Create free account <span aria-hidden="true">→</span></a>
+            <a class="btn btn--secondary btn--lg" href="/login.html" data-guest-only>I already have an account</a>
+            <a class="btn btn--primary btn--lg hidden" href="/dashboard.html" data-user-only>Open your dashboard</a>
+          </div>
+          <small class="h-cta__fine">No card · No bank login · Delete any time</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer h-footer">
+    <div class="container h-footer__grid">
+      <div>
+        <a class="brand" href="/" aria-label="FinVista home"><img class="brand__logo" src="/assets/brand/finvista-wordmark.png" alt="FinVista" width="451" height="144"></a>
+        <p>See your financial future. Estimates only, not financial or tax advice.</p>
+      </div>
+      <nav aria-label="Product"><strong>Product</strong><a href="#features">Features</a><a href="#advisor">AI advisor</a><a href="/dashboard.html?preview=1">Sample dashboard</a></nav>
+      <nav aria-label="Company"><strong>Trust</strong><a href="#security">Security</a><a href="#faq">FAQ</a></nav>
+      <nav aria-label="Account" data-guest-only><strong>Account</strong><a href="/register.html">Sign up</a><a href="/login.html">Log in</a></nav>
+    </div>
+    <div class="container h-footer__base"><span>© <span data-year></span> FinVista</span></div>
+  </footer>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

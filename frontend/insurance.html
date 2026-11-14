@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insurance — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/analytics.css">
+  <link rel="stylesheet" href="/css/investments.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Insurance</h1>
+        </div>
+        <div class="topbar__actions"><button class="btn btn--primary btn--sm" id="add-btn" type="button">+ Add policy</button></div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+      <div class="alert alert--info mb-4" role="note"><strong>Policies you enter.</strong> FinVista does not check them with your insurer and does not tell you how much cover you need. Use it to keep premiums and renewal dates in one place.</div>
+
+      <div class="dash-grid" id="ins" aria-busy="true">
+        <section class="card kpi kpi--expense span-3" aria-labelledby="k1l"><div class="stat"><span class="stat__label" id="k1l">Premiums per year</span><span class="stat__value" id="k-annual">—</span><span class="stat__sub" id="k-annual-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="k2l"><div class="stat"><span class="stat__label" id="k2l">Monthly equivalent</span><span class="stat__value" id="k-monthly">—</span><span class="stat__sub">Annual premiums divided by 12</span></div></section>
+        <section class="card kpi kpi--income span-3" aria-labelledby="k3l"><div class="stat"><span class="stat__label" id="k3l">Active policies</span><span class="stat__value" id="k-count">—</span><span class="stat__sub" id="k-count-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="k4l"><div class="stat"><span class="stat__label" id="k4l">Renewals needing attention</span><span class="stat__value" id="k-due">—</span><span class="stat__sub" id="k-due-sub"></span></div></section>
+
+        <section class="card span-12" aria-labelledby="cv"><div class="card__title" id="cv">Total cover by type (active policies)</div><ul class="cover-list" id="cover-list"></ul></section>
+
+        <section class="span-12" aria-labelledby="l1">
+          <h2 class="card__title" id="l1">Your policies</h2>
+          <div class="inv-list" id="pol-list"></div>
+        </section>
+      </div>
+      <p class="inv-note" id="model-note"></p>
+    </main>
+  </div>
+
+  <script type="module" src="/js/investments/insurance.js"></script>
+</body>
+</html>

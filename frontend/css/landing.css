@@ -1,0 +1,72 @@
+/* Public marketing pages (landing, auth). */
+.nav__cta { display: flex; align-items: center; gap: var(--sp-3); }
+@media (max-width: 760px) { .nav__cta { flex-direction: column; align-items: stretch; margin-top: var(--sp-3); } }
+
+/* Hero */
+.hero { padding-block: var(--sp-8) var(--sp-7); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: var(--sp-7); align-items: center; }
+.hero h1 { font-size: var(--fs-hero); letter-spacing: -0.035em; margin-bottom: var(--sp-4); }
+.hero .lead { margin-bottom: var(--sp-5); }
+.hero__note { margin-top: var(--sp-4); font-size: var(--fs-xs); color: var(--text-3); }
+.pill { display: inline-flex; align-items: center; gap: var(--sp-2); padding: 0.3rem 0.8rem; border-radius: var(--radius-pill); background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--purple-400); font-size: var(--fs-xs); font-weight: 600; margin-bottom: var(--sp-4); }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-400); box-shadow: 0 0 8px var(--cyan-400); }
+
+/* Illustrative product preview (pure CSS, no user data) */
+.mock { position: relative; padding: var(--sp-4); border-radius: var(--radius-lg); background: var(--glass); border: 1px solid var(--border-strong); backdrop-filter: blur(16px); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.15); }
+.mock::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; background: var(--accent-gradient); opacity: 0.12; z-index: -1; filter: blur(30px); }
+.mock__bar { display: flex; gap: 6px; margin-bottom: var(--sp-4); }
+.mock__bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--bg-3); }
+.mock__kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); margin-bottom: var(--sp-4); }
+.mock__kpi { background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--sp-3); }
+.mock__kpi small { display: block; color: var(--text-3); font-size: 0.68rem; }
+.mock__kpi b { font-size: var(--fs-md); font-variant-numeric: tabular-nums; }
+.mock__chart { display: flex; align-items: flex-end; gap: var(--sp-3); height: 150px; padding: var(--sp-3); background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.mock__col { flex: 1; display: flex; align-items: flex-end; gap: 3px; height: 100%; }
+.mock__col i { flex: 1; border-radius: 4px 4px 0 0; display: block; }
+.mock__col i:first-child { background: var(--chart-3); }
+.mock__col i:last-child { background: var(--chart-5); }
+.h20 { height: 20%; } .h30 { height: 30%; } .h40 { height: 40%; } .h50 { height: 50%; } .h60 { height: 60%; } .h70 { height: 70%; } .h80 { height: 80%; } .h90 { height: 90%; }
+.mock__tag { position: absolute; right: var(--sp-4); bottom: calc(var(--sp-3) * -1); }
+
+/* Sections */
+.section__head { max-width: 640px; margin-bottom: var(--sp-6); }
+.section__head--center { margin-inline: auto; text-align: center; }
+.feature__num { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: var(--radius-sm); background: rgba(139, 92, 246, 0.14); color: var(--purple-400); font-weight: 700; font-size: var(--fs-sm); margin-bottom: var(--sp-4); font-variant-numeric: tabular-nums; }
+.feature h3 { margin-bottom: var(--sp-2); }
+.feature p { margin: 0; font-size: var(--fs-sm); }
+
+.steps { counter-reset: step; }
+.step { position: relative; }
+.step::before { counter-increment: step; content: "0" counter(step); position: absolute; top: var(--sp-4); left: var(--sp-5); font-size: var(--fs-3xl); font-weight: 800; letter-spacing: -0.04em; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.step.card { padding-top: calc(var(--sp-8) + var(--sp-2)); }
+
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-4); }
+.checklist li { display: grid; grid-template-columns: 24px 1fr; gap: var(--sp-3); color: var(--text-2); }
+.checklist li::before { content: "✓"; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--positive-bg); color: var(--positive); font-size: var(--fs-xs); font-weight: 700; }
+.checklist strong { color: var(--text-1); display: block; }
+.split { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--sp-7); align-items: start; }
+
+.cta { text-align: center; padding: var(--sp-8) var(--sp-5); border-radius: var(--radius-lg); border: 1px solid rgba(139, 92, 246, 0.3); background: radial-gradient(600px 240px at 50% 0%, rgba(139, 92, 246, 0.22), transparent 70%), var(--bg-2); }
+.cta .lead { margin-inline: auto; }
+
+/* Auth pages */
+.auth { min-height: calc(100vh - var(--header-h)); display: grid; place-items: center; padding: var(--sp-6) var(--sp-4); }
+.auth__card { width: min(440px, 100%); }
+.auth__card h1 { font-size: var(--fs-2xl); }
+.auth__alt { text-align: center; margin: var(--sp-5) 0 0; font-size: var(--fs-sm); }
+
+@media (max-width: 960px) {
+  .hero__grid, .split { grid-template-columns: minmax(0, 1fr); gap: var(--sp-6); }
+  .hero { padding-block: var(--sp-7) var(--sp-6); }
+}
+
+/* Auth pages: ambient glow behind a glass card */
+.auth { position: relative; isolation: isolate; }
+.auth::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(520px 360px at 30% 30%, rgba(124, 58, 237, 0.22), transparent 70%), radial-gradient(520px 360px at 72% 70%, rgba(8, 145, 178, 0.16), transparent 70%); }
+.auth__card { border-radius: 24px; padding: var(--sp-6); background: linear-gradient(180deg, rgba(23, 32, 51, 0.82), rgba(13, 19, 35, 0.88)); backdrop-filter: blur(14px); border-color: rgba(148, 163, 184, 0.14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 40px 90px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(139, 92, 246, 0.12); animation: auth-in 0.5s var(--ease) both; }
+.auth__card .input, .auth__card .select { border-radius: 12px; background: rgba(7, 11, 22, 0.55); border-color: rgba(148, 163, 184, 0.18); }
+.auth__card .input:focus, .auth__card .select:focus { border-color: rgba(167, 139, 250, 0.8); box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18); }
+.auth__card .btn--primary { box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.85); }
+@keyframes auth-in { from { opacity: 0; transform: translateY(14px); } }
+@media (prefers-reduced-motion: reduce) { .auth__card { animation: none; } }

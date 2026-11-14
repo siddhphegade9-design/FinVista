@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Account</h1>
+        </div>
+      </div>
+
+      <div class="account-grid">
+        <section class="card" aria-labelledby="h-profile">
+          <h2 class="card__title" id="h-profile">Profile</h2>
+          <form id="profile-form" novalidate>
+            <div class="field"><label class="field__label" for="p-email">Email</label><input class="input" id="p-email" name="email" type="email" disabled><span class="field__hint">Email cannot be changed yet.</span></div>
+            <div class="field"><label class="field__label" for="p-name">Full name</label><input class="input" id="p-name" name="fullName" autocomplete="name"><span class="field__error" id="profile-fullName-error" role="alert"></span></div>
+            <div class="form-actions"><button class="btn btn--primary" type="submit">Save name</button></div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="h-currency">
+          <h2 class="card__title" id="h-currency">Currency</h2>
+          <form id="currency-form" novalidate>
+            <div class="field"><label class="field__label" for="c-currency">Currency for your amounts</label><select class="select" id="c-currency" name="currency"></select><span class="field__error" id="currency-currency-error" role="alert"></span></div>
+            <p class="field__hint">This changes how amounts are shown. It does <strong>not</strong> convert anything you have already entered, so check your records after switching. The Indian tax tool is only available when the currency is INR.</p>
+            <div class="form-actions"><button class="btn btn--primary" type="submit">Save currency</button></div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="h-password">
+          <h2 class="card__title" id="h-password">Change password</h2>
+          <form id="password-form" novalidate>
+            <div class="field"><label class="field__label" for="pw-current">Current password</label><input class="input" id="pw-current" name="currentPassword" type="password" autocomplete="current-password"><span class="field__error" id="pw-currentPassword-error" role="alert"></span></div>
+            <div class="field"><label class="field__label" for="pw-new">New password</label><input class="input" id="pw-new" name="newPassword" type="password" autocomplete="new-password"><span class="field__hint">At least 10 characters. Changing it signs you out on your other devices.</span><span class="field__error" id="pw-newPassword-error" role="alert"></span></div>
+            <div class="form-actions"><button class="btn btn--primary" type="submit">Change password</button></div>
+          </form>
+        </section>
+
+        <section class="card danger-zone" aria-labelledby="h-delete">
+          <h2 class="card__title" id="h-delete">Delete account</h2>
+          <p>This permanently deletes your account and all of your data. It cannot be undone.</p>
+          <form id="delete-form" novalidate>
+            <div class="field"><label class="field__label" for="del-password">Confirm with your password</label><input class="input" id="del-password" name="password" type="password" autocomplete="current-password"><span class="field__error" id="del-password-error" role="alert"></span></div>
+            <div class="form-actions"><button class="btn btn--danger" type="submit">Delete my account</button></div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="/js/account.js"></script>
+</body>
+</html>

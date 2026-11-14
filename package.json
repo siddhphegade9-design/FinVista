@@ -1,0 +1,25 @@
+{
+  "name": "finvista",
+  "version": "0.1.0",
+  "description": "FinVista - AI-powered personal finance intelligence platform. See Your Financial Future.",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "backend/src/server.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js",
+    "db:migrate": "node backend/src/db/migrate.js",
+    "db:status": "node backend/src/db/migrate.js status",
+    "test": "node --test --test-concurrency=1 \"backend/tests/*.test.js\" \"frontend/tests/*.test.js\"",
+    "start:prod": "node backend/src/db/migrate.js && node backend/src/server.js"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.0",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "pg": "^8.23.1"
+  }
+}

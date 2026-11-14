@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design system — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="FinVista home"><img class="brand__logo" src="/assets/brand/finvista-wordmark.png" alt="FinVista" width="451" height="144"></a>
+      <button class="btn btn--ghost btn--icon nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/styleguide.html" aria-current="page">Design system</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section stack">
+    <div>
+      <span class="eyebrow">Internal reference</span>
+      <h1>FinVista design system</h1>
+      <p class="lead">Tokens and components every page is built from. Values on this page are illustrative samples for visual reference only; they are not user data.</p>
+    </div>
+
+    <section aria-labelledby="h-colors">
+      <h2 id="h-colors">Colour</h2>
+      <div class="grid grid--auto" id="swatches"></div>
+    </section>
+
+    <section aria-labelledby="h-type">
+      <h2 id="h-type">Typography</h2>
+      <div class="card stack">
+        <h1 class="mb-0">Heading 1 — Premium finance</h1>
+        <h2 class="mb-0">Heading 2 — Spending insights</h2>
+        <h3 class="mb-0">Heading 3 — Budget overview</h3>
+        <p>Body text in Inter at a comfortable reading size and line height.</p>
+        <p class="num mb-0" id="fmt-demo"></p>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-buttons">
+      <h2 id="h-buttons">Buttons &amp; badges</h2>
+      <div class="card stack">
+        <div class="row row--wrap">
+          <button class="btn btn--primary" type="button">Primary</button>
+          <button class="btn btn--secondary" type="button">Secondary</button>
+          <button class="btn btn--ghost" type="button">Ghost</button>
+          <button class="btn btn--danger" type="button">Danger</button>
+          <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        </div>
+        <div class="row row--wrap">
+          <span class="badge">Neutral</span>
+          <span class="badge badge--positive">Income</span>
+          <span class="badge badge--negative">Expense</span>
+          <span class="badge badge--warning">Near limit</span>
+          <span class="badge badge--info">Info</span>
+          <span class="badge badge--accent">AI</span>
+          <span class="badge badge--estimate">Predicted</span>
+        </div>
+        <div class="row row--wrap">
+          <button class="btn btn--secondary" type="button" id="btn-toast">Show toast</button>
+          <button class="btn btn--secondary" type="button" id="btn-confirm">Show confirm dialog</button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-cards">
+      <h2 id="h-cards">Stat tiles &amp; progress</h2>
+      <div class="grid grid--3">
+        <div class="card"><div class="stat"><span class="stat__label">Sample income</span><span class="stat__value" data-sample="125000"></span><span class="stat__delta stat__delta--up">▲ sample +4.2%</span></div></div>
+        <div class="card"><div class="stat"><span class="stat__label">Sample expenses</span><span class="stat__value" data-sample="78500"></span><span class="stat__delta stat__delta--down">▼ sample −1.8%</span></div></div>
+        <div class="card">
+          <div class="card__title">Budget utilisation (sample)</div>
+          <div class="stack">
+            <div class="progress"><div class="progress__bar" data-value="45"></div></div>
+            <div class="progress progress--warning"><div class="progress__bar" data-value="82"></div></div>
+            <div class="progress progress--danger"><div class="progress__bar" data-value="100"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-forms">
+      <h2 id="h-forms">Forms</h2>
+      <form class="card grid grid--2" id="demo-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="amount">Amount (₹)</label>
+          <input class="input num" id="amount" name="amount" inputmode="decimal" placeholder="e.g. 1,250.50" autocomplete="off">
+          <span class="field__hint">Up to two decimal places.</span>
+          <span class="field__error" id="amount-error" role="alert"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="category">Category</label>
+          <select class="select" id="category" name="category">
+            <option>Food &amp; Dining</option><option>Transport</option><option>Bills &amp; Utilities</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="note">Description</label>
+          <input class="input" id="note" name="note" placeholder="Swiggy order">
+        </div>
+        <div class="field">
+          <label class="field__label" for="when">Date</label>
+          <input class="input" id="when" name="when" type="date">
+        </div>
+        <div><button class="btn btn--primary" type="submit">Validate amount</button></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="h-table">
+      <h2 id="h-table">Table, alerts &amp; empty state</h2>
+      <div class="stack">
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount</th></tr></thead>
+            <tbody id="sample-rows"></tbody>
+          </table>
+        </div>
+        <div class="alert alert--warning" role="note">Warning: you have used 82% of this month's Food budget.</div>
+        <div class="alert alert--info" role="note">Predicted values always carry a dashed “Predicted” badge.</div>
+        <div class="card empty"><div class="empty__title">No transactions yet</div><div>Add your first transaction to see insights.</div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-charts">
+      <h2 id="h-charts">Charts (Chart.js, themed)</h2>
+      <div class="grid grid--2">
+        <div class="card"><div class="card__title">Income vs expenses (sample)</div><div class="chart"><canvas id="chart-bar" role="img" aria-label="Sample bar chart of income versus expenses"></canvas></div></div>
+        <div class="card"><div class="card__title">Spending breakdown (sample)</div><div class="chart"><canvas id="chart-doughnut" role="img" aria-label="Sample doughnut chart of spending by category"></canvas></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-api">
+      <h2 id="h-api">Backend connection</h2>
+      <div class="card row row--between row--wrap">
+        <div><strong>GET /api/health</strong><div class="text-muted" id="health-detail">Checking…</div></div>
+        <span class="badge" id="health-badge">Checking</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row row--between row--wrap">
+      <span>© <span data-year></span> FinVista</span>
+      <span>Estimates only. Not financial or tax advice.</span>
+    </div>
+  </footer>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/styleguide.js"></script>
+</body>
+</html>

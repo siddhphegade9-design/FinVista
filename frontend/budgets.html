@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budgets — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/budgets.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Budgets</h1>
+        </div>
+        <div class="topbar__actions">
+          <div class="month-nav" role="group" aria-label="Choose month">
+            <button class="btn btn--secondary btn--sm" id="prev-month" type="button" aria-label="Previous month">‹</button>
+            <span class="month-nav__label" id="month-label" aria-live="polite"></span>
+            <button class="btn btn--secondary btn--sm" id="next-month" type="button" aria-label="Next month">›</button>
+          </div>
+          <button class="btn btn--primary btn--sm" id="add-btn" type="button">+ Set a budget</button>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+      <p class="bud-note" id="phase-note"></p>
+
+      <div class="dash-grid" id="bud" aria-busy="true">
+        <section class="card kpi kpi--income span-3" aria-labelledby="k1l"><div class="stat"><span class="stat__label" id="k1l">Budgeted</span><span class="stat__value" id="k-limit">—</span><span class="stat__sub" id="k-limit-sub"></span></div></section>
+        <section class="card kpi kpi--expense span-3" aria-labelledby="k2l"><div class="stat"><span class="stat__label" id="k2l">Spent in budgeted categories</span><span class="stat__value" id="k-spent">—</span><span class="stat__sub" id="k-spent-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="k3l"><div class="stat"><span class="stat__label" id="k3l">Remaining</span><span class="stat__value" id="k-remaining">—</span><span class="stat__sub" id="k-remaining-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="k4l"><div class="stat"><span class="stat__label" id="k4l">Needs attention</span><span class="stat__value" id="k-attn">—</span><span class="stat__sub" id="k-attn-sub"></span></div></section>
+
+        <section class="card span-12 hidden" id="overall-card" aria-labelledby="o1"><div class="card__title" id="o1">Overall budget (all spending)</div><div id="overall"></div></section>
+
+        <section class="card span-12" aria-labelledby="l1">
+          <div class="card__title" id="l1">Category budgets</div>
+          <div id="rows"></div>
+          <div class="bud-empty hidden" id="empty">
+            <div class="empty__title">No budgets for this month</div>
+            <p>Set a limit for the categories you want to watch. You can start from last month's budgets, or from the average of your own recent spending.</p>
+            <div class="bud-empty__actions">
+              <button class="btn btn--primary btn--sm" id="copy-btn" type="button">Copy last month's budgets</button>
+              <button class="btn btn--secondary btn--sm" id="suggest-btn" type="button">Suggest from my history</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-12" aria-labelledby="u1">
+          <div class="card__title" id="u1">Spending without a budget</div>
+          <div id="unbudgeted"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/js/budgets/budgets.js"></script>
+</body>
+</html>

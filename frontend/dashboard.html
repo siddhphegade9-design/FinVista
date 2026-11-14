@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="topbar__actions">
+          <div class="month-nav" role="group" aria-label="Select month">
+            <button class="btn btn--ghost btn--sm" id="month-prev" type="button" aria-label="Previous month">‹</button>
+            <span class="month-nav__label num" id="month-label" aria-live="polite"></span>
+            <button class="btn btn--ghost btn--sm" id="month-next" type="button" aria-label="Next month">›</button>
+          </div>
+          <a class="btn btn--primary btn--sm" href="/transactions.html?new=1">+ Add transaction</a>
+        </div>
+      </div>
+
+      <p class="page-sub" id="dash-greeting"></p>
+      <div id="banner" class="preview-banner"></div>
+
+      <div class="dash-grid">
+        <!-- KPIs -->
+        <section class="card kpi kpi--income span-3" aria-labelledby="k1"><span class="kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span><div class="stat"><span class="stat__label" id="k1">Total income</span><span class="stat__value" id="kpi-income">—</span><span class="stat__sub" id="kpi-income-sub"></span></div></section>
+        <section class="card kpi kpi--expense span-3" aria-labelledby="k2"><span class="kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span><div class="stat"><span class="stat__label" id="k2">Total expenses</span><span class="stat__value" id="kpi-expenses">—</span><span class="stat__sub" id="kpi-expenses-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="k3"><span class="kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16v10H4zM4 10l8-6 8 6M12 14v2"/></svg></span><div class="stat"><span class="stat__label" id="k3">Current savings</span><span class="stat__value" id="kpi-savings">—</span><span class="stat__sub" id="kpi-savings-sub">All-time income minus expenses</span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="k4"><span class="kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5L5 19M7.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM16.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg></span><div class="stat"><span class="stat__label" id="k4">Savings rate</span><span class="stat__value" id="kpi-rate">—</span><span class="stat__sub" id="kpi-rate-sub"></span></div></section>
+
+        <!-- Charts -->
+        <section class="card span-8" aria-labelledby="c1">
+          <div class="card__title" id="c1">Income vs expenses · last 6 months</div>
+          <div class="chart" id="bar-wrap"><canvas id="chart-bar" role="img" aria-label="Bar chart of monthly income versus expenses for the last six months"></canvas></div>
+          <div class="empty hidden" id="bar-empty"><div class="empty__title">No data to chart yet</div><div>Add transactions to see your income and expenses over time.</div></div>
+        </section>
+        <section class="card span-4" aria-labelledby="c2">
+          <div class="card__title" id="c2">Spending breakdown · <span id="breakdown-month"></span></div>
+          <div class="chart" id="donut-wrap"><canvas id="chart-donut" role="img" aria-label="Doughnut chart of this month's spending by category"></canvas></div>
+          <div class="empty hidden" id="donut-empty"><div class="empty__title">No spending this month</div><div>Expenses you add will be grouped by category here.</div></div>
+        </section>
+
+        <!-- Budgets + transactions -->
+        <section class="card span-5" aria-labelledby="b1">
+          <div class="row row--between"><div class="card__title" id="b1">Budget utilisation</div><span class="badge" id="budget-overall"></span></div>
+          <div id="budget-list"></div>
+        </section>
+        <section class="card span-7" aria-labelledby="t1">
+          <div class="card__title" id="t1">Recent transactions</div>
+          <div id="tx-wrap"></div>
+        </section>
+
+        <!-- AI advisor -->
+        <section class="card insight-card span-12" aria-labelledby="i1">
+          <div class="insight-card__head">
+            <span class="insight-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+            <div>
+              <h2 id="i1">Ask the AI advisor</h2>
+              <p>Plain-language answers based on your own records. FinVista's code does the maths; the AI explains it.</p>
+            </div>
+          </div>
+          <div class="ask-row">
+            <a class="ask-chip" href="/advisor.html?q=Why%20was%20my%20spending%20higher%20this%20month%3F">Why was my spending higher this month?</a>
+            <a class="ask-chip" href="/advisor.html?q=Where%20can%20I%20cut%20back%20to%20save%20more%3F">Where can I cut back to save more?</a>
+            <a class="ask-chip" href="/advisor.html?q=Am%20I%20on%20track%20with%20my%20budgets%3F">Am I on track with my budgets?</a>
+            <a class="ask-chip" href="/advisor.html">Ask something else</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/dashboard/dashboard.js"></script>
+</body>
+</html>

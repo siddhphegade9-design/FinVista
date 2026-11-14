@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categories — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/categories.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Categories</h1>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+
+      <p class="cat-intro">New transactions are categorised from their description using keyword rules. It is a fixed set of rules, not a guess: the same description always gets the same category, and you can see why. Anything you choose yourself is never changed automatically.</p>
+
+      <div class="cat-grid">
+        <section class="card cat-card" aria-labelledby="cats-title">
+          <h2 id="cats-title">Your categories</h2>
+          <form class="cat-add" id="cat-form" novalidate>
+            <div class="field"><label class="field__label" for="cat-name">New category</label><input class="input" id="cat-name" maxlength="40" autocomplete="off" placeholder="e.g. Pets" aria-describedby="cat-error"></div>
+            <div class="field"><label class="field__label" for="cat-kind">Type</label><select class="select" id="cat-kind"><option value="expense">Expense</option><option value="income">Income</option></select></div>
+            <button class="btn btn--primary btn--sm" type="submit">Add</button>
+          </form>
+          <div class="field__error" id="cat-error" role="alert"></div>
+          <div id="cat-list" aria-busy="true"><div class="skeleton cat-skeleton"></div></div>
+        </section>
+
+        <section class="card cat-card" aria-labelledby="rules-title">
+          <h2 id="rules-title">Your rules</h2>
+          <p class="cat-help">When a description contains the words of a rule, the transaction goes to that category. Your rules are checked before the built-in ones, and the longest match wins.</p>
+          <form class="cat-add" id="rule-form" novalidate>
+            <div class="field"><label class="field__label" for="rule-pattern">Description contains</label><input class="input" id="rule-pattern" maxlength="60" autocomplete="off" placeholder="e.g. big bazaar" aria-describedby="rule-error"></div>
+            <div class="field"><label class="field__label" for="rule-category">Category</label><select class="select" id="rule-category"></select></div>
+            <button class="btn btn--primary btn--sm" type="submit">Add rule</button>
+          </form>
+          <div class="field__error" id="rule-error" role="alert"></div>
+          <div id="rule-list" aria-busy="true"></div>
+          <div class="cat-apply">
+            <button class="btn btn--secondary btn--sm" id="apply-btn" type="button">Apply rules to existing transactions</button>
+            <span class="cat-help">Shows a preview first. Categories you chose yourself are never touched.</span>
+          </div>
+          <div id="apply-result" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <section class="card cat-card cat-builtin" aria-labelledby="builtin-title">
+        <h2 id="builtin-title">Built-in keywords</h2>
+        <p class="cat-help">These ship with FinVista and cover common Indian merchants and bill types. They are read-only; add a rule above to override one.</p>
+        <div id="builtin-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/categories/categories.js"></script>
+</body>
+</html>

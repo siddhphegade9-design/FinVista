@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="FinVista home"><img class="brand__logo" src="/assets/brand/finvista-wordmark.png" alt="FinVista" width="451" height="144"></a>
+      <a class="btn btn--ghost btn--sm" href="/">← Back to home</a>
+    </div>
+  </header>
+  <main class="auth">
+    <div class="card card--glass auth__card">
+      <h1>Create your account</h1>
+      <p>Start tracking and planning with FinVista.</p>
+      <div class="alert alert--danger hidden mb-4" id="form-error" role="alert"></div>
+      <form id="auth-form" data-mode="register" novalidate>
+          <div class="field"><label class="field__label" for="fullName">Full name</label><input class="input" id="fullName" name="fullName" autocomplete="name"><span class="field__error" id="fullName-error" role="alert"></span></div>
+          <div class="field"><label class="field__label" for="email">Email</label><input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="field__error" id="email-error" role="alert"></span></div>
+          <div class="field"><label class="field__label" for="currency">Currency</label><select class="select" id="currency" name="currency"></select><span class="field__hint">The currency your amounts are in. You can change it later. The Indian tax tool is only available for INR.</span><span class="field__error" id="currency-error" role="alert"></span></div>
+          <div class="field"><label class="field__label" for="password">Password</label><input class="input" id="password" name="password" type="password" autocomplete="new-password"><span class="field__hint">At least 10 characters.</span><span class="field__error" id="password-error" role="alert"></span></div>
+          <div class="field"><label class="field__label" for="confirm">Confirm password</label><input class="input" id="confirm" name="confirm" type="password" autocomplete="new-password"><span class="field__error" id="confirm-error" role="alert"></span></div>
+        <button class="btn btn--primary btn--lg btn--block" type="submit">Create account</button>
+      </form>
+      <p class="auth__alt">Already registered? <a href="/login.html">Log in</a></p>
+    </div>
+  </main>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

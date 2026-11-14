@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tax (India) — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/tax.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Tax (India)</h1>
+        </div>
+        <div class="topbar__actions">
+          <label class="tax-year"><span class="field__label">Tax year</span> <select class="select" id="year"></select></label>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+      <div class="alert alert--info mb-4" role="note" id="rules-note"></div>
+
+      <div class="tax-grid">
+        <form class="card" id="tax-form" novalidate aria-labelledby="f1">
+          <div class="card__title" id="f1">Your yearly figures (₹)</div>
+          <p class="tax-hint">Enter annual amounts from your payslips and investment proofs. Nothing is read from your bank. Only the figures you save here are stored.</p>
+          <div id="fields"></div>
+          <div class="tax-actions">
+            <button class="btn btn--primary" type="submit" id="calc-btn">Compare regimes</button>
+            <button class="btn btn--secondary" type="button" id="save-btn">Save figures</button>
+            <button class="btn btn--secondary" type="button" id="suggest-btn">Fill from my SIP and insurance records</button>
+          </div>
+          <div id="form-msg" class="tax-msg" role="status" aria-live="polite"></div>
+        </form>
+
+        <div id="results" aria-live="polite">
+          <section class="card tax-empty" id="results-empty"><div class="empty__title">No estimate yet</div><p>Fill in your figures and choose Compare regimes. The calculation uses fixed rules in the app. It is not done by the AI.</p></section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/js/tax/tax.js"></script>
+</body>
+</html>

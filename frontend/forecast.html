@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forecast — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/analytics.css">
+  <link rel="stylesheet" href="/css/forecast.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Forecast</h1>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+      <div class="alert alert--info mb-4" role="note"><strong>Projections, not facts.</strong> Everything marked “projected” is an estimate worked out from your own past months. It is not a guarantee and not financial advice.</div>
+      <div id="notice" class="mb-4"></div>
+
+      <div class="dash-grid" id="forecast" aria-busy="true">
+        <section class="card kpi kpi--expense span-3" aria-labelledby="f1"><div class="stat"><span class="stat__label" id="f1">Projected spending next month</span><span class="stat__value" id="k-exp">—</span><span class="stat__sub" id="k-exp-sub"></span></div></section>
+        <section class="card kpi kpi--income span-3" aria-labelledby="f2"><div class="stat"><span class="stat__label" id="f2">Projected income next month</span><span class="stat__value" id="k-inc">—</span><span class="stat__sub" id="k-inc-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="f3"><div class="stat"><span class="stat__label" id="f3">Projected net next month</span><span class="stat__value" id="k-net">—</span><span class="stat__sub" id="k-net-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="f4"><div class="stat"><span class="stat__label" id="f4">This month so far (actual)</span><span class="stat__value" id="k-now">—</span><span class="stat__sub" id="k-now-sub"></span></div></section>
+
+        <section class="card span-8" aria-labelledby="c1">
+          <div class="card__title" id="c1">Spending: recorded months and projection</div>
+          <div class="chart" id="w-fc"><canvas id="chart-fc" role="img" aria-label="Bars of recorded monthly spending followed by dashed projected months with a likely range"></canvas></div>
+          <div class="empty hidden" id="e-fc"><div class="empty__title" id="e-fc-title">Not enough history yet</div><div id="e-fc-text"></div></div>
+        </section>
+        <section class="card span-4" aria-labelledby="c2">
+          <div class="card__title" id="c2">How this is worked out</div>
+          <p class="fc-method" id="method"></p>
+          <p class="fc-method">Months with no transactions after your first one count as zero. The current month is never used as history because it is unfinished.</p>
+        </section>
+
+        <section class="card span-7" aria-labelledby="t1">
+          <div class="card__title" id="t1">Projected spending by category (typical month)</div>
+          <div id="cat-fc"></div>
+        </section>
+        <section class="card span-5" aria-labelledby="t2">
+          <div class="card__title" id="t2">Next three months (projected)</div>
+          <div id="months-fc"></div>
+        </section>
+
+        <section class="card span-12" aria-labelledby="pc">
+          <div class="card__title" id="pc">Planned monthly commitments (from your records)</div>
+          <p class="fc-method" id="commit-text"></p>
+        </section>
+
+        <section class="card span-12" aria-labelledby="a1">
+          <div class="card__title" id="a1">Unusual spending in the last 90 days</div>
+          <p class="fc-method" id="an-notice"></p>
+          <div id="an-list" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/forecast/forecast.js"></script>
+</body>
+</html>

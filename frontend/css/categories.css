@@ -1,0 +1,33 @@
+/* Categories page. Layout only; colours and spacing come from tokens.css. */
+.cat-intro { max-width: 70ch; color: var(--text-2); font-size: var(--fs-sm); margin: 0 0 var(--sp-5); }
+.cat-help { font-size: var(--fs-xs); color: var(--text-3); margin: 0 0 var(--sp-3); }
+.cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-4); align-items: start; }
+.cat-card { padding: var(--sp-5); }
+.cat-card h2 { margin: 0 0 var(--sp-3); font-size: var(--fs-lg); }
+.cat-add { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; gap: var(--sp-3); align-items: end; }
+.cat-add .field { margin-bottom: 0; min-width: 0; }
+.cat-skeleton { height: 160px; }
+
+.cat-group { margin-top: var(--sp-4); }
+.cat-group h3 { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); margin: 0 0 var(--sp-2); }
+.cat-rows { list-style: none; margin: 0; padding: 0; }
+.cat-row { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-2) 0; border-top: 1px solid var(--border); min-width: 0; }
+.cat-row:first-child { border-top: 0; }
+.cat-row__name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.cat-row__meta { font-size: var(--fs-xs); color: var(--text-3); white-space: nowrap; }
+.cat-row__actions { display: inline-flex; gap: var(--sp-1); }
+.cat-row code { background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 0.4rem; }
+
+.cat-apply { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); }
+.cat-apply .cat-help { margin: 0; }
+#apply-result:not(:empty) { margin-top: var(--sp-3); }
+.cat-changes { list-style: none; margin: var(--sp-3) 0 0; padding: 0; max-height: 220px; overflow: auto; font-size: var(--fs-sm); }
+.cat-changes li { padding: var(--sp-1) 0; overflow-wrap: anywhere; }
+
+.cat-builtin details { border-top: 1px solid var(--border); padding: var(--sp-2) 0; }
+.cat-builtin summary { cursor: pointer; font-weight: 600; }
+.cat-builtin p { margin: var(--sp-2) 0 0; font-size: var(--fs-sm); color: var(--text-2); overflow-wrap: anywhere; }
+
+@media (max-width: 960px) { .cat-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .cat-add { grid-template-columns: minmax(0, 1fr); } .cat-add .btn { justify-self: start; } }
+#rule-form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What-if simulator — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/budgets.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>What-if simulator</h1>
+        </div>
+      </div>
+      <div id="page-error" class="mb-4"></div>
+      <div class="alert alert--info mb-4" role="note"><div><strong>This is a simulation, not a prediction.</strong> It assumes your income and spending stay at the baseline every month, apart from the changes you choose. Nothing you try here is saved.</div></div>
+
+      <div class="sim-grid" id="sim" aria-busy="true">
+        <section class="card sim-form" aria-labelledby="sf">
+          <div class="card__title" id="sf">Change something</div>
+          <div class="alert alert--info hidden" id="need-baseline" role="status"></div>
+          <form id="form" novalidate>
+            <p class="bud-note" id="baseline-note"></p>
+            <fieldset id="manual" class="hidden">
+              <legend>Your monthly baseline</legend>
+              <div class="sim-row">
+                <div class="field"><label class="field__label" for="f-binc">Monthly income (₹)</label><input class="input" id="f-binc" inputmode="decimal" autocomplete="off"><div class="field__error" id="f-binc-error" role="alert"></div></div>
+                <div class="field"><label class="field__label" for="f-bexp">Monthly spending (₹)</label><input class="input" id="f-bexp" inputmode="decimal" autocomplete="off"><div class="field__error" id="f-bexp-error" role="alert"></div></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Income</legend>
+              <div class="sim-row">
+                <div class="field"><label class="field__label" for="f-imode">Change by</label><select class="select" id="f-imode"><option value="percent">Percent (%)</option><option value="amount">Amount per month (₹)</option></select></div>
+                <div class="field"><label class="field__label" for="f-ival">Change</label><input class="input" id="f-ival" inputmode="decimal" autocomplete="off" placeholder="0"><div class="field__error" id="f-ival-error" role="alert"></div></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Spending</legend>
+              <div class="field"><label class="field__label" for="f-spend">Change all spending by (%)</label><input class="input" id="f-spend" inputmode="decimal" autocomplete="off" placeholder="0"><div class="field__hint">Use a negative number to cut, e.g. -10.</div><div class="field__error" id="f-spend-error" role="alert"></div></div>
+              <div id="cuts"></div>
+              <div class="field__error" id="f-cuts-error" role="alert"></div>
+            </fieldset>
+            <fieldset>
+              <legend>One-off expense</legend>
+              <div class="sim-row">
+                <div class="field"><label class="field__label" for="f-oamt">Amount (₹)</label><input class="input" id="f-oamt" inputmode="decimal" autocomplete="off" placeholder="none"><div class="field__error" id="f-oamt-error" role="alert"></div></div>
+                <div class="field"><label class="field__label" for="f-omonth">In month number</label><input class="input" id="f-omonth" inputmode="numeric" autocomplete="off" value="1"><div class="field__error" id="f-omonth-error" role="alert"></div></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Savings</legend>
+              <div class="sim-row">
+                <div class="field"><label class="field__label" for="f-start">Starting savings (₹)</label><input class="input" id="f-start" inputmode="decimal" autocomplete="off" placeholder="0"><div class="field__error" id="f-start-error" role="alert"></div></div>
+                <div class="field"><label class="field__label" for="f-ret">Yearly return on savings (%)</label><input class="input" id="f-ret" inputmode="decimal" autocomplete="off" placeholder="0"><div class="field__hint">Your own assumption, 0 to 30.</div><div class="field__error" id="f-ret-error" role="alert"></div></div>
+                <div class="field"><label class="field__label" for="f-months">Months to simulate</label><input class="input" id="f-months" inputmode="numeric" autocomplete="off" value="12"><div class="field__error" id="f-months-error" role="alert"></div></div>
+                <div class="field"><label class="field__label" for="f-goal">Savings goal (₹)</label><input class="input" id="f-goal" inputmode="decimal" autocomplete="off" placeholder="optional"><div class="field__error" id="f-goal-error" role="alert"></div></div>
+              </div>
+            </fieldset>
+            <button class="btn btn--primary" id="run" type="submit">Run simulation</button>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="sr">
+          <div class="card__title" id="sr">Result <span class="sim-tag">simulation</span></div>
+          <div class="empty" id="result-empty"><div class="empty__title">Nothing run yet</div><div>Change something on the left and run the simulation.</div></div>
+          <div class="hidden" id="result">
+            <p class="bud-note" id="result-label"></p>
+            <div class="sim-compare">
+              <div class="stat"><span class="stat__label">Monthly savings now</span><span class="stat__value" id="r-base-net">—</span></div>
+              <div class="stat"><span class="stat__label">Monthly savings in scenario</span><span class="stat__value" id="r-scen-net">—</span></div>
+              <div class="stat"><span class="stat__label">Balance after <span id="r-months"></span> months</span><span class="stat__value" id="r-end">—</span><span class="stat__sub" id="r-end-sub"></span></div>
+            </div>
+            <div class="alert alert--info hidden" id="r-goal" role="status"></div>
+            <div class="chart"><canvas id="chart-sim" role="img" aria-label="Line chart of the savings balance month by month, comparing the baseline with the scenario"></canvas></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/simulator/simulator.js"></script>
+</body>
+</html>

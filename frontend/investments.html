@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investments (SIP) — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/analytics.css">
+  <link rel="stylesheet" href="/css/investments.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Investments (SIP)</h1>
+        </div>
+        <div class="topbar__actions"><button class="btn btn--primary btn--sm" id="add-btn" type="button">+ Add SIP or investment</button></div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+      <div class="alert alert--info mb-4" role="note"><strong>Your records, and estimates from them.</strong> FinVista does not connect to your bank or fund house. Amounts you enter are yours; anything marked “estimate” is worked out from the yearly return you assume. Real returns vary and can be negative. This is not investment advice.</div>
+
+      <div class="dash-grid" id="inv" aria-busy="true">
+        <section class="card kpi kpi--expense span-3" aria-labelledby="k1l"><div class="stat"><span class="stat__label" id="k1l">Monthly commitment</span><span class="stat__value" id="k-monthly">—</span><span class="stat__sub" id="k-monthly-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="k2l"><div class="stat"><span class="stat__label" id="k2l">Scheduled so far</span><span class="stat__value" id="k-invested">—</span><span class="stat__sub">If every instalment was paid</span></div></section>
+        <section class="card kpi kpi--income span-3" aria-labelledby="k3l"><div class="stat"><span class="stat__label" id="k3l">Value you recorded</span><span class="stat__value" id="k-recorded">—</span><span class="stat__sub" id="k-recorded-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="k4l"><div class="stat"><span class="stat__label" id="k4l">Estimate in 10 years</span><span class="stat__value" id="k-future">—</span><span class="stat__sub" id="k-future-sub"></span></div></section>
+
+        <section class="card span-12" aria-labelledby="g1">
+          <div class="card__title" id="g1">Active SIPs: money put in and estimated value, next 10 years</div>
+          <div class="chart" id="w-growth"><canvas id="chart-growth" role="img" aria-label="Line chart of the total scheduled investment and its estimated value for each of the next ten years"></canvas></div>
+          <div class="empty hidden" id="e-growth"><div class="empty__title">No active SIPs yet</div><div>Add one to see how it could grow under the return you assume.</div></div>
+        </section>
+
+        <section class="span-12" aria-labelledby="l1">
+          <h2 class="card__title" id="l1">Your SIPs and investments</h2>
+          <div class="inv-list" id="sip-list"></div>
+        </section>
+
+        <section class="card span-12" aria-labelledby="c1">
+          <div class="card__title" id="c1">What-if calculator <span class="inv-tag">estimate</span></div>
+          <p class="inv-note">Try an amount without saving anything. Each instalment is assumed paid at the start of its month, compounding monthly at the yearly return you enter.</p>
+          <form class="calc" id="calc" novalidate>
+            <div class="field"><label class="field__label" for="c-amount">Monthly amount (₹)</label><input class="input" id="c-amount" inputmode="decimal" autocomplete="off" value="5000"><div class="field__error" id="c-amount-error" role="alert"></div></div>
+            <div class="field"><label class="field__label" for="c-years">Years</label><input class="input" id="c-years" inputmode="decimal" autocomplete="off" value="10"><div class="field__error" id="c-years-error" role="alert"></div></div>
+            <div class="field"><label class="field__label" for="c-step">Yearly step-up (%)</label><input class="input" id="c-step" inputmode="decimal" autocomplete="off" value="0"><div class="field__error" id="c-step-error" role="alert"></div></div>
+            <div class="field"><label class="field__label" for="c-return">Assumed yearly return (%)</label><input class="input" id="c-return" inputmode="decimal" autocomplete="off" value="12"><div class="field__error" id="c-return-error" role="alert"></div></div>
+            <button class="btn btn--primary btn--sm" type="submit">Calculate</button>
+          </form>
+          <div class="calc-result" id="calc-result" aria-live="polite"></div>
+        </section>
+      </div>
+      <p class="inv-note" id="model-note"></p>
+    </main>
+  </div>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/investments/investments.js"></script>
+</body>
+</html>

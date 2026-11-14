@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analytics — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/analytics.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Analytics</h1>
+        </div>
+        <form class="range" id="range-form" aria-label="Choose a date range">
+          <div class="field"><label class="field__label" for="range-preset">Period</label><select class="select" id="range-preset"></select></div>
+          <div class="field range__custom hidden" id="range-custom">
+            <label class="field__label" for="range-from">From</label><input class="input" id="range-from" type="date">
+          </div>
+          <div class="field range__custom hidden" id="range-custom-to">
+            <label class="field__label" for="range-to">To</label><input class="input" id="range-to" type="date">
+          </div>
+        </form>
+      </div>
+
+      <div id="notice" class="mb-4"></div>
+      <p class="analytics-note" id="range-summary" aria-live="polite"></p>
+
+      <div class="dash-grid" id="analytics" aria-busy="true">
+        <!-- KPIs -->
+        <section class="card kpi kpi--income span-3" aria-labelledby="a1"><div class="stat"><span class="stat__label" id="a1">Income</span><span class="stat__value" id="k-income">—</span><span class="stat__sub" id="k-income-sub"></span></div></section>
+        <section class="card kpi kpi--expense span-3" aria-labelledby="a2"><div class="stat"><span class="stat__label" id="a2">Expenses</span><span class="stat__value" id="k-expenses">—</span><span class="stat__sub" id="k-expenses-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="a3"><div class="stat"><span class="stat__label" id="a3">Net savings</span><span class="stat__value" id="k-net">—</span><span class="stat__sub" id="k-net-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="a4"><div class="stat"><span class="stat__label" id="a4">Average monthly spend</span><span class="stat__value" id="k-avg">—</span><span class="stat__sub" id="k-avg-sub"></span></div></section>
+
+        <!-- Trend + category split -->
+        <section class="card span-8" aria-labelledby="c1">
+          <div class="card__title" id="c1">Income, expenses and net by month</div>
+          <div class="chart" id="w-trend"><canvas id="chart-trend" role="img" aria-label="Monthly income and expenses as bars with net savings as a line"></canvas></div>
+          <div class="empty hidden" id="e-trend"><div class="empty__title">No transactions in this period</div><div>Choose another period or add transactions.</div></div>
+        </section>
+        <section class="card span-4" aria-labelledby="c2">
+          <div class="card__title" id="c2">Where the money went</div>
+          <div class="chart" id="w-donut"><canvas id="chart-donut" role="img" aria-label="Doughnut chart of expenses by category for the selected period"></canvas></div>
+          <div class="empty hidden" id="e-donut"><div class="empty__title">No expenses in this period</div></div>
+        </section>
+
+        <section class="card span-6" aria-labelledby="c3">
+          <div class="card__title" id="c3">Cumulative net savings</div>
+          <div class="chart" id="w-cum"><canvas id="chart-cum" role="img" aria-label="Line chart of running net savings across the period"></canvas></div>
+          <div class="empty hidden" id="e-cum"><div class="empty__title">Nothing to show</div></div>
+        </section>
+        <section class="card span-6" aria-labelledby="c4">
+          <div class="card__title" id="c4">Spending by category, month by month</div>
+          <div class="chart" id="w-stack"><canvas id="chart-stack" role="img" aria-label="Stacked bars of monthly expenses split by the largest categories"></canvas></div>
+          <div class="empty hidden" id="e-stack"><div class="empty__title">No expenses in this period</div></div>
+        </section>
+
+        <!-- Detail tables -->
+        <section class="card span-7" aria-labelledby="t1">
+          <div class="card__title" id="t1">Expense categories</div>
+          <div id="cat-list"></div>
+        </section>
+        <section class="card span-5" aria-labelledby="c5">
+          <div class="card__title" id="c5">Spending by day of week</div>
+          <div class="chart chart--short" id="w-week"><canvas id="chart-week" role="img" aria-label="Bar chart of total expenses for each day of the week"></canvas></div>
+          <div class="empty hidden" id="e-week"><div class="empty__title">No expenses in this period</div></div>
+        </section>
+
+        <section class="card span-7" aria-labelledby="t2">
+          <div class="card__title" id="t2">Largest expenses</div>
+          <div id="top-list"></div>
+        </section>
+        <section class="card span-5" aria-labelledby="t3">
+          <div class="card__title" id="t3">Income sources</div>
+          <div id="income-list"></div>
+        </section>
+      </div>
+
+      <p class="analytics-note analytics-note--foot">Every figure on this page is a total of the transactions you recorded. Nothing here is a forecast or an estimate.</p>
+    </main>
+  </div>
+
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/analytics/analytics.js"></script>
+</body>
+</html>

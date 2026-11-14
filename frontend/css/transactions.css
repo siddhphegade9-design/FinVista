@@ -1,0 +1,86 @@
+/* Transactions page. Layout only; colours and spacing come from tokens.css. */
+.tx-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-4); }
+.tx-summary__item { padding: var(--sp-4) var(--sp-5); }
+.tx-summary .stat__value { font-size: var(--fs-xl); }
+
+.filters { display: grid; grid-template-columns: 2fr 1fr 1.4fr 1fr 1fr 1.3fr auto; gap: var(--sp-3); align-items: end; margin-bottom: var(--sp-4); padding: var(--sp-4); }
+.filters .field { margin-bottom: 0; min-width: 0; }
+.filters__actions { padding-bottom: 2px; }
+.filters__error { grid-column: 1 / -1; min-height: 0; }
+.filters__error:empty { display: none; }
+
+.tx-skeleton { height: 220px; }
+.tx-table .col-date { width: 1%; }
+.tx-table .col-actions { width: 1%; white-space: nowrap; text-align: right; }
+.tx-table td.desc { max-width: 28ch; overflow-wrap: anywhere; }
+.tx-actions { display: inline-flex; gap: var(--sp-1); }
+
+.pager { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-4); font-size: var(--fs-sm); color: var(--text-3); }
+.pager:empty { display: none; }
+.pager__buttons { display: inline-flex; gap: var(--sp-2); }
+
+/* ---- Forms inside dialogs ---- */
+.modal--wide { width: min(640px, calc(100vw - 2rem)); }
+.modal h3 { margin-top: 0; }
+.modal form { margin: 0; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--sp-4); }
+.form-grid .field--full { grid-column: 1 / -1; }
+.seg { display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border-strong); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-1); }
+.seg label { display: block; text-align: center; padding: 0.55rem 1rem; cursor: pointer; font-size: var(--fs-sm); font-weight: 600; color: var(--text-2); }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg input:checked + span { color: #fff; }
+.seg label:has(input:checked) { background: var(--accent-gradient); color: #fff; }
+.seg label:has(input:focus-visible) { box-shadow: inset var(--focus-ring); }
+.form-error { margin-bottom: var(--sp-4); }
+
+/* ---- Import dialog ---- */
+.import-preview { max-height: 220px; overflow: auto; margin: var(--sp-3) 0; }
+.import-preview .table td, .import-preview .table th { padding: var(--sp-2) var(--sp-3); white-space: nowrap; }
+.import-help { font-size: var(--fs-xs); color: var(--text-3); margin: 0 0 var(--sp-4); }
+.import-skipped { max-height: 160px; overflow: auto; margin: var(--sp-3) 0 0; padding-left: var(--sp-5); font-size: var(--fs-xs); color: var(--text-2); }
+.check { display: flex; align-items: flex-start; gap: var(--sp-2); font-size: var(--fs-sm); color: var(--text-2); margin: var(--sp-3) 0; }
+.check input { margin-top: 0.2rem; }
+
+@media (max-width: 1100px) {
+  .filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .filters__search { grid-column: 1 / -1; }
+}
+@media (max-width: 820px) {
+  .tx-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .form-grid { grid-template-columns: 1fr; }
+  .tx-table .col-cat { display: none; }
+  .tx-table td.desc { max-width: 16ch; }
+  .topbar__actions { width: 100%; }
+}
+
+/* The visually-hidden header cell is absolutely positioned; without a positioned wrapper it escapes the
+   wrapper's scroll clipping and widens the whole page on narrow screens. */
+.tx-list .table-wrap { position: relative; }
+@media (max-width: 640px) {
+  .tx-actions { flex-direction: column; align-items: stretch; }
+  .tx-table th, .tx-table td { padding-left: var(--sp-3); padding-right: var(--sp-3); }
+}
+.date-short { display: none; }
+@media (max-width: 640px) {
+  .date-full { display: none; }
+  .date-short { display: inline; }
+  .tx-table td.desc { max-width: 12ch; }
+  .tx-table td.num { white-space: nowrap; }
+  .tx-actions .btn { padding: 0.3rem 0.5rem; }
+}
+@media (max-width: 640px) {
+  .tx-table th, .tx-table td { padding-left: var(--sp-2); padding-right: var(--sp-2); }
+  .tx-table th { letter-spacing: 0.02em; }
+  .tx-list { padding: var(--sp-3); }
+}
+@media (max-width: 640px) {
+  .tx-table th { font-size: 0.65rem; }
+  .tx-actions .btn { padding: 0.3rem 0.4rem; }
+}
+
+/* ---- Automatic categorisation ---- */
+.auto-tag { margin-left: var(--sp-2); font-size: var(--fs-xs); color: var(--text-3); border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); padding: 0 0.35rem; white-space: nowrap; }
+.field__hint { font-size: var(--fs-xs); color: var(--text-3); margin-top: var(--sp-1); min-height: 1.2em; }

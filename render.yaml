@@ -1,0 +1,23 @@
+# Render Blueprint: a FREE web service. Use a free external Postgres (for example Neon) for DATABASE_URL;
+# Render's own free database expires after 30 days. See docs/DEPLOYMENT.md.
+services:
+  - type: web
+    name: finvista
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm run start:prod
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: DATABASE_SSL
+        value: "true"
+      - key: DATABASE_URL
+        sync: false   # paste your Neon connection string in the Render dashboard
+      - key: GROQ_API_KEY
+        sync: false   # optional: leave empty to disable the AI advisor

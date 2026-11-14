@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/budgets.css">
+  <link rel="stylesheet" href="/css/reports.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Reports</h1>
+        </div>
+        <div class="topbar__actions">
+          <button class="btn btn--secondary btn--sm" id="print-btn" type="button">Print or save as PDF</button>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+
+      <section class="card rep-score" id="score-card" aria-labelledby="s1" aria-busy="true">
+        <div class="card__title" id="s1">Financial health score</div>
+        <div id="score"></div>
+      </section>
+
+      <div class="rep-month-head">
+        <h2 id="report-title">Monthly report</h2>
+        <div class="month-nav" role="group" aria-label="Choose month">
+          <button class="btn btn--secondary btn--sm" id="prev-month" type="button" aria-label="Previous month">‹</button>
+          <span class="month-nav__label" id="month-label" aria-live="polite"></span>
+          <button class="btn btn--secondary btn--sm" id="next-month" type="button" aria-label="Next month">›</button>
+        </div>
+      </div>
+      <p class="bud-note" id="report-note"></p>
+
+      <div class="dash-grid" id="report" aria-busy="true">
+        <section class="card kpi kpi--income span-3" aria-labelledby="k1l"><div class="stat"><span class="stat__label" id="k1l">Income</span><span class="stat__value" id="k-income">—</span><span class="stat__sub" id="k-income-sub"></span></div></section>
+        <section class="card kpi kpi--expense span-3" aria-labelledby="k2l"><div class="stat"><span class="stat__label" id="k2l">Spending</span><span class="stat__value" id="k-expenses">—</span><span class="stat__sub" id="k-expenses-sub"></span></div></section>
+        <section class="card kpi span-3" aria-labelledby="k3l"><div class="stat"><span class="stat__label" id="k3l">Saved</span><span class="stat__value" id="k-net">—</span><span class="stat__sub" id="k-net-sub"></span></div></section>
+        <section class="card kpi kpi--rate span-3" aria-labelledby="k4l"><div class="stat"><span class="stat__label" id="k4l">Transactions</span><span class="stat__value" id="k-count">—</span><span class="stat__sub" id="k-count-sub"></span></div></section>
+
+        <section class="card span-12" aria-labelledby="c1"><div class="card__title" id="c1">Where the money went</div><div id="categories"></div></section>
+        <section class="card span-12" aria-labelledby="b1"><div class="card__title" id="b1">Budgets</div><div id="budgets"></div></section>
+        <section class="card span-12" aria-labelledby="t1"><div class="card__title" id="t1">Largest expenses</div><div id="top"></div></section>
+        <section class="card span-12" aria-labelledby="u1"><div class="card__title" id="u1">Unusual spending this month</div><div id="unusual"></div></section>
+        <section class="card span-12" aria-labelledby="m1"><div class="card__title" id="m1">Planned commitments</div><div id="commitments"></div></section>
+      </div>
+
+      <p class="rep-foot no-print"><a id="csv-link" class="btn btn--secondary btn--sm" href="/api/transactions/export" download>Download this month's transactions (CSV)</a></p>
+      <p class="rep-foot">Prepared from the figures recorded in FinVista. Estimates and scores are guides, not financial or tax advice.</p>
+    </main>
+  </div>
+
+  <script type="module" src="/js/reports/reports.js"></script>
+</body>
+</html>

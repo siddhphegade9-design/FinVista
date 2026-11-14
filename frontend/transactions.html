@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transactions — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>Transactions</h1>
+        </div>
+        <div class="topbar__actions">
+          <button class="btn btn--secondary btn--sm" id="import-btn" type="button">Import CSV</button>
+          <a class="btn btn--secondary btn--sm" id="export-link" href="/api/transactions/export">Export CSV</a>
+          <button class="btn btn--primary btn--sm" id="add-btn" type="button">+ Add transaction</button>
+        </div>
+      </div>
+
+      <div id="page-error" class="mb-4"></div>
+
+      <!-- Totals for the current filters (all pages, not just the visible one) -->
+      <div class="tx-summary" id="tx-summary" aria-live="polite">
+        <section class="card tx-summary__item"><div class="stat"><span class="stat__label">Income</span><span class="stat__value text-positive" id="sum-income">—</span></div></section>
+        <section class="card tx-summary__item"><div class="stat"><span class="stat__label">Expenses</span><span class="stat__value text-negative" id="sum-expenses">—</span></div></section>
+        <section class="card tx-summary__item"><div class="stat"><span class="stat__label">Net</span><span class="stat__value" id="sum-net">—</span></div></section>
+        <section class="card tx-summary__item"><div class="stat"><span class="stat__label">Transactions</span><span class="stat__value" id="sum-count">—</span></div></section>
+      </div>
+
+      <form class="card filters" id="filters" role="search" aria-label="Filter transactions">
+        <div class="field filters__search"><label class="field__label" for="f-q">Search</label><input class="input" id="f-q" type="search" maxlength="100" placeholder="Search descriptions" autocomplete="off"></div>
+        <div class="field"><label class="field__label" for="f-type">Type</label>
+          <select class="select" id="f-type"><option value="">All</option><option value="income">Income</option><option value="expense">Expense</option></select></div>
+        <div class="field"><label class="field__label" for="f-category">Category</label>
+          <select class="select" id="f-category"><option value="">All categories</option></select></div>
+        <div class="field"><label class="field__label" for="f-from">From</label><input class="input" id="f-from" type="date"></div>
+        <div class="field"><label class="field__label" for="f-to">To</label><input class="input" id="f-to" type="date"></div>
+        <div class="field"><label class="field__label" for="f-sort">Sort by</label>
+          <select class="select" id="f-sort">
+            <option value="date_desc">Newest first</option><option value="date_asc">Oldest first</option>
+            <option value="amount_desc">Amount: high to low</option><option value="amount_asc">Amount: low to high</option>
+          </select></div>
+        <div class="filters__actions"><button class="btn btn--ghost btn--sm" id="clear-filters" type="button">Clear filters</button></div>
+        <div class="field__error filters__error" id="filter-error" role="alert"></div>
+      </form>
+
+      <section class="card tx-list" aria-labelledby="tx-title">
+        <h2 class="sr-only" id="tx-title">Transaction list</h2>
+        <div id="tx-body" aria-busy="true"><div class="skeleton tx-skeleton"></div></div>
+        <div class="pager" id="pager"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/js/transactions/transactions.js"></script>
+</body>
+</html>

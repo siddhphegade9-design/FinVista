@@ -1,0 +1,26 @@
+/* Tax (India) page. */
+.tax-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--sp-5); align-items: start; }
+.tax-year { display: flex; align-items: center; gap: var(--sp-2); }
+.tax-hint { font-size: var(--fs-sm); color: var(--text-3); margin: 0 0 var(--sp-4); }
+.tax-group { border: 0; padding: 0; margin: 0 0 var(--sp-5); }
+.tax-group legend { font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-3); padding: 0; }
+.tax-group .field { margin-bottom: var(--sp-3); }
+.tax-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+.tax-msg { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--text-2); min-height: 1.2em; }
+.tax-check { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); color: var(--text-2); }
+
+.tax-verdict { margin-bottom: var(--sp-4); }
+.tax-verdict strong { color: var(--text-1); }
+.tax-regimes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-4); }
+.tax-regime[data-better="true"] { border-color: rgba(34, 211, 238, 0.5); }
+.tax-regime__total { font-size: var(--fs-xl, 1.75rem); font-weight: 700; color: var(--text-1); margin: var(--sp-2) 0; }
+.tax-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.tax-table td { padding: var(--sp-2) 0; border-top: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+.tax-table td:last-child { text-align: right; white-space: nowrap; color: var(--text-1); }
+.tax-table .tax-note { display: block; font-size: var(--fs-xs, 0.75rem); color: var(--text-3); }
+.tax-table tr.tax-total td { font-weight: 700; color: var(--text-1); }
+.tax-assume { font-size: var(--fs-sm); color: var(--text-3); padding-left: var(--sp-5); margin: var(--sp-2) 0 0; }
+.tax-assume li { margin-bottom: var(--sp-2); }
+
+@media (max-width: 960px) { .tax-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .tax-regimes { grid-template-columns: 1fr; } }

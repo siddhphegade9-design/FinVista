@@ -1,0 +1,111 @@
+/* ==========================================================================
+   FinVista design tokens - single source of truth for the design system.
+   Every colour, size, radius and timing used elsewhere comes from here.
+   ========================================================================== */
+
+/* Self-hosted Inter (variable). ₹ lives in the latin-ext subset. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* --- Surfaces: deep navy / charcoal ---------------------------------- */
+  --bg-0: #070b16;            /* page background */
+  --bg-1: #0b1120;            /* sidebar, header */
+  --bg-2: #101828;            /* cards */
+  --bg-3: #172033;            /* raised / hover */
+  --border: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.28);
+  --glass: rgba(16, 24, 40, 0.62);
+
+  /* --- Text ------------------------------------------------------------- */
+  --text-1: #f1f5f9;
+  --text-2: #aab6c8;
+  --text-3: #7c8aa0;
+
+  /* --- Accents: purple + cyan ------------------------------------------ */
+  --purple-400: #a78bfa;
+  --purple-500: #8b5cf6;
+  --purple-600: #7c3aed;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --accent-gradient: linear-gradient(135deg, var(--purple-500), var(--cyan-500));
+
+  /* --- Semantic --------------------------------------------------------- */
+  --positive: #34d399;
+  --negative: #fb7185;
+  --warning: #fbbf24;
+  --info: var(--cyan-400);
+  --positive-bg: rgba(52, 211, 153, 0.12);
+  --negative-bg: rgba(251, 113, 133, 0.12);
+  --warning-bg: rgba(251, 191, 36, 0.12);
+  --info-bg: rgba(34, 211, 238, 0.12);
+
+  /* --- Chart palette (also read by js/core/chartTheme.js) -------------- */
+  --chart-1: #8b5cf6;
+  --chart-2: #22d3ee;
+  --chart-3: #34d399;
+  --chart-4: #fbbf24;
+  --chart-5: #fb7185;
+  --chart-6: #60a5fa;
+  --chart-7: #f472b6;
+  --chart-8: #94a3b8;
+
+  /* --- Typography ------------------------------------------------------- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --fs-hero: clamp(2.4rem, 1.5rem + 4vw, 4.25rem);
+  --lh-tight: 1.15;
+  --lh-base: 1.6;
+
+  /* --- Spacing scale (4px base) ---------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 7rem;
+
+  /* --- Shape, depth, motion -------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 0 1px rgba(139, 92, 246, 0.35), 0 8px 32px rgba(139, 92, 246, 0.18);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+
+  /* --- Layout ----------------------------------------------------------- */
+  --container: 1200px;
+  --sidebar-w: 260px;
+  --header-h: 64px;
+  --focus-ring: 0 0 0 3px rgba(34, 211, 238, 0.45);
+}

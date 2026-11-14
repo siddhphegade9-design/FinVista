@@ -1,0 +1,21 @@
+/* Forecast page. Projections are visually distinct from recorded figures (dashed, lighter). */
+.span-12 { grid-column: span 12; }
+.fc-method { font-size: var(--fs-sm); color: var(--text-2); margin: 0 0 var(--sp-3); }
+.fc-chip { display: inline-block; margin-left: var(--sp-2); font-size: var(--fs-xs); color: var(--text-3); border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); padding: 0 0.35rem; vertical-align: middle; }
+
+.fc-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); padding: var(--sp-3) 0; border-top: 1px solid var(--border); font-size: var(--fs-sm); }
+.fc-row:first-child { border-top: 0; padding-top: 0; }
+.fc-row__name { min-width: 0; overflow-wrap: anywhere; }
+.fc-row__range { display: block; color: var(--text-3); font-size: var(--fs-xs); }
+.fc-row__value { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.an-item { display: grid; grid-template-columns: auto 1fr auto; gap: var(--sp-3); align-items: start; padding: var(--sp-3) 0; border-top: 1px solid var(--border); font-size: var(--fs-sm); }
+.an-item:first-child { border-top: 0; }
+.an-item__body { min-width: 0; overflow-wrap: anywhere; }
+.an-item__title { font-weight: 600; }
+.an-item__reason { display: block; color: var(--text-2); font-size: var(--fs-xs); margin-top: var(--sp-1); }
+.an-item__amount { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.an-item__amount a { display: block; font-size: var(--fs-xs); margin-top: var(--sp-1); }
+
+@media (max-width: 1100px) { .span-12 { grid-column: span 12; } }
+@media (max-width: 640px) { .an-item { grid-template-columns: 1fr auto; } .an-item .badge { grid-column: 1 / -1; justify-self: start; } }

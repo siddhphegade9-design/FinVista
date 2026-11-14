@@ -1,0 +1,31 @@
+/* Reports page: health score and monthly report. */
+.rep-score { margin-bottom: var(--sp-5); }
+.rep-score__top { display: flex; align-items: center; gap: var(--sp-5); flex-wrap: wrap; margin-bottom: var(--sp-4); }
+.rep-score__num { font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--text-1); }
+.rep-score__num small { font-size: var(--fs-md, 1rem); font-weight: 500; color: var(--text-3); }
+.rep-score__meta { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
+.rep-comp { padding: var(--sp-3) 0; border-top: 1px solid var(--border); }
+.rep-comp__head { display: flex; justify-content: space-between; gap: var(--sp-3); flex-wrap: wrap; font-weight: 600; color: var(--text-1); margin-bottom: var(--sp-2); }
+.rep-comp__pts { color: var(--text-2); font-weight: 500; }
+.rep-comp__why { font-size: var(--fs-sm); color: var(--text-2); margin-top: var(--sp-2); }
+.rep-comp__tip { font-size: var(--fs-sm); color: var(--text-3); margin-top: var(--sp-1); }
+.rep-comp[data-scored="false"] .rep-comp__head { color: var(--text-3); }
+.rep-month-head { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap; margin: var(--sp-5) 0 var(--sp-2); }
+.rep-month-head h2 { margin: 0; font-size: var(--fs-lg, 1.25rem); }
+.rep-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.rep-table th { text-align: left; color: var(--text-3); font-weight: 500; padding-bottom: var(--sp-2); }
+.rep-table td { padding: var(--sp-2) 0; border-top: 1px solid var(--border); color: var(--text-2); }
+.rep-table td:last-child, .rep-table th:last-child { text-align: right; white-space: nowrap; }
+.rep-cat { padding: var(--sp-2) 0; }
+.rep-cat__head { display: flex; justify-content: space-between; gap: var(--sp-3); font-size: var(--fs-sm); margin-bottom: var(--sp-1); color: var(--text-2); }
+.rep-foot { font-size: var(--fs-sm); color: var(--text-3); margin: var(--sp-4) 0 0; }
+
+@media print {
+  .sidebar, .scrim, .topbar__actions, .month-nav, .no-print, .menu-btn { display: none !important; }
+  body, .app-main, .card { background: #fff !important; color: #111 !important; box-shadow: none !important; }
+  .card { border: 1px solid #bbb !important; break-inside: avoid; }
+  .app-shell { display: block !important; }
+  .rep-score__num, .rep-comp__head, .stat__value, h1, h2 { color: #111 !important; }
+  .rep-comp__why, .rep-comp__tip, .rep-hint, .stat__label, .stat__sub, .rep-table td, .rep-foot { color: #333 !important; }
+}
+.rep-hint { font-size: var(--fs-sm); color: var(--text-3); margin: 0 0 var(--sp-4); }

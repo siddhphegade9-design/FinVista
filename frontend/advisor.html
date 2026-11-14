@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Advisor — FinVista</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/finvista-icon-180.png">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/transactions.css">
+  <link rel="stylesheet" href="/css/advisor.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="app-main">
+      <div class="topbar">
+        <div class="topbar__title">
+          <button class="btn btn--secondary btn--icon menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <h1>AI Advisor</h1>
+        </div>
+      </div>
+      <div id="page-error" class="mb-4"></div>
+
+      <div class="adv-grid" id="adv" aria-busy="true">
+        <section class="card" aria-labelledby="a1">
+          <div class="card__title" id="a1">Ask about your money</div>
+          <div class="alert alert--info hidden" id="not-configured" role="status"><div><strong>The AI advisor is not set up on this server.</strong> The server administrator needs to add a Groq API key. Everything else in FinVista works without it.</div></div>
+          <p class="adv-note">The advisor explains <strong>figures FinVista has already worked out</strong> from your own records. It does not calculate tax, recommend products or see your transaction descriptions. It can make mistakes and is not financial advice.</p>
+          <div class="adv-presets" id="presets" role="group" aria-label="Suggested questions"></div>
+          <form id="ask-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="question">Or ask your own question</label>
+              <textarea class="textarea" id="question" rows="3" maxlength="500" placeholder="For example: why was my spending higher last month?"></textarea>
+              <div class="field__hint"><span id="count">0</span> / 500</div>
+              <div class="field__error" id="question-error" role="alert"></div>
+            </div>
+            <button class="btn btn--primary" id="ask-btn" type="submit">Ask</button>
+          </form>
+          <div id="thinking" class="adv-thinking hidden" role="status">Working out an answer…</div>
+          <div id="answer-box" class="adv-answer hidden" aria-live="polite">
+            <div class="adv-answer__head"><span class="badge badge--accent">AI-generated</span> <span id="answer-meta"></span></div>
+            <div id="answer"></div>
+            <p class="adv-note" id="answer-label"></p>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="a2">
+          <div class="card__title" id="a2">What the advisor can see</div>
+          <p class="adv-note">Only these summary figures are sent to the AI provider (Groq) when you ask a question. Names, emails and transaction descriptions are never included.</p>
+          <button class="btn btn--secondary btn--sm" id="data-btn" type="button" aria-expanded="false" aria-controls="data-pre">Show the figures</button>
+          <pre class="adv-data hidden" id="data-pre" tabindex="0"></pre>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/js/advisor/advisor.js"></script>
+</body>
+</html>
