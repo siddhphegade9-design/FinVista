@@ -172,4 +172,7 @@ FinVista is a planning tool. Forecasts, simulations, tax figures and AI answers 
 [Chart.js](https://www.chartjs.org/) (MIT) · [Inter](https://rsms.me/inter/) typeface (SIL Open Font License) · [Groq](https://groq.com/) for the free inference API.
 
 ## License
-Copyright © 2026 the FinVista author. All rights reserved. No open-source licence has been granted yet.
+
+Copyright © 2026 FinVista. All rights reserved.
+
+FinVista is proprietary software. No open-source license has been granted. No permission is granted to copy, modify, distribute, or commercially use this software without prior written permission from the copyright owner.
