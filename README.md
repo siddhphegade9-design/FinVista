@@ -73,7 +73,7 @@
 
 1. **Clone and install**
    ```bash
-   git clone https://github.com/<your-username>/finvista.git
+   git clone https://github.com/<siddhphegade9-design>/finvista.git
    cd finvista
    npm install
    ```
