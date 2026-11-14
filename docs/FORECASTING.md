@@ -1,4 +1,4 @@
-# Forecast and unusual spending (Milestone 8)
+# Forecast and unusual spending
 
 Both features are deterministic and explainable. There is no AI involved, and nothing here is a guarantee or financial advice.
 
@@ -16,7 +16,7 @@ Worked example: expenses of 10,000, 12,000, 14,000, 16,000 give (1x10 + 2x12 + 3
 
 ## Unusual spending: `GET /api/anomalies`
 
-Looks at expenses of the last 12 months and reports items from the last 90 days. Thresholds live in `CONFIG` in `insights/anomalies.js`.
+Looks at expenses of the last 12 months and reports items from the last 90 days. Thresholds live in `CONFIG` in `insights/anomalies.js`. The amounts below are for INR; for other currencies they are scaled by an approximate size factor (`thresholdScale` in `config/currencies.js`), not an exchange rate.
 
 | Kind | Rule | Guards |
 | --- | --- | --- |
@@ -31,4 +31,4 @@ Each item carries `severity` (high, medium, low), a `reason` sentence, and a `tr
 - "Today" and month boundaries use UTC, as in analytics.
 - Income projections assume similar months; irregular income (freelance) gives a wide range.
 - Seasonal patterns (festivals, annual premiums) are not modelled and may appear as unusual.
-- The projection uses history only. Planned SIP and insurance outflows from the Milestone 8.5 records are shown beside it as `commitments` and are deliberately not added in, because if the user also records those debits as transactions they are already in the history (adding them would double count).
+- The projection uses history only. Planned SIP and insurance outflows from the SIP and insurance records are shown beside it as `commitments` and are deliberately not added in, because if the user also records those debits as transactions they are already in the history (adding them would double count).

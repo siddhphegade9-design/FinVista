@@ -1,6 +1,6 @@
 # Transactions
 
-Everything on this page requires login and is scoped to the signed-in user. Money is in INR with two decimals.
+Everything on this page requires login and is scoped to the signed-in user. Amounts are in the account's currency (see [CURRENCY.md](CURRENCY.md)) with up to two decimals.
 
 ## API
 
@@ -22,7 +22,7 @@ Errors use `{ error: { code, message, details? } }`; `details` maps field names 
 
 ## Rules
 
-- Amount: greater than 0, at most 2 decimals, up to 9,999,999,999.99. Commas and the rupee sign are accepted.
+- Amount: greater than 0, at most 2 decimals, up to 9,999,999,999.99. Commas and the currency symbols ₹ $ € £ ¥ are accepted.
 - Date: a real calendar date from 1990, not in the future (one day of slack for timezones).
 - Description: 1 to 200 characters; control characters are removed.
 - Category: must belong to you and match the type (an income cannot use an expense category).
@@ -39,6 +39,6 @@ The first row is a header (case-insensitive). Required: `Date`, `Description`, `
 
 Files exported by FinVista can be imported again (the formula guard added on export is removed on import).
 
-## Not in this milestone
+## Not supported
 
-Custom categories (add, rename, delete), bulk edit, recurring transactions and attachments. Automatic categorisation arrives in Milestone 7.
+Bulk edit, recurring transactions and attachments. Custom categories and automatic categorisation are covered in [CATEGORIZATION.md](CATEGORIZATION.md).

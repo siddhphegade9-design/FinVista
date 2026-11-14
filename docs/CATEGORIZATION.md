@@ -1,4 +1,4 @@
-# Expense categorization (Milestone 7)
+# Expense categorization
 
 Transactions are categorised by **fixed, deterministic keyword rules**. There is no AI and no network call involved: the same description always produces the same category, and the reason is shown ("matched keyword swiggy" or "matched your rule dunzo").
 

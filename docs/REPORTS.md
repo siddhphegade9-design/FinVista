@@ -1,4 +1,4 @@
-# Financial health score and reports (Milestone 12)
+# Financial health score and reports
 
 ## Health score (`backend/src/health/score.js`)
 A transparent 0-100 **guide** computed from the user's own recorded data. Pure JavaScript: no AI, no database access inside the formula.

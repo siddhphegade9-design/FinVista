@@ -1,4 +1,4 @@
-# Investments (SIP) and insurance (Milestone 8.5)
+# Investments (SIP) and insurance
 
 These are **records the user enters**. FinVista does not connect to a bank, fund house or insurer, never asks for their credentials, and does not verify anything. Where it works out a figure from a record, the figure is an estimate and is labelled as one. None of this is investment, insurance or tax advice.
 
@@ -33,7 +33,8 @@ Computed: annual premium (premium x payments per year), monthly equivalent, `day
 ## Where these records are used
 
 - **Forecast:** `GET /api/forecast` includes `commitments` (monthly SIP total and monthly-equivalent premiums). They are shown beside the projection and are not added to it, to avoid double counting debits the user also records as transactions.
-- **Planned:** the tax module (Milestone 11) can use ELSS and health-premium records for 80C and 80D, and the health score (Milestone 12) can use them for savings and protection indicators. Neither exists yet.
+- **Tax estimator:** "Fill from my records" suggests 80C (ELSS and PPF), 80CCD(1B) (NPS) and 80D (active health policies) from these records. See [TAX.md](TAX.md).
+- **Health score:** active SIPs count towards *Regular investing* and an active health policy towards *Health insurance*. See [REPORTS.md](REPORTS.md).
 
 ## Known limitations
 

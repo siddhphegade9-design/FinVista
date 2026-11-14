@@ -1,4 +1,4 @@
-# Indian tax intelligence (Milestone 11)
+# Indian tax intelligence
 
 A resident-individual income-tax **estimator** that compares the new and old regimes. All maths is deterministic JavaScript
 (`backend/src/tax/engine.js`) driven by data in `backend/src/tax/rules.js`. **The AI advisor never calculates tax.**

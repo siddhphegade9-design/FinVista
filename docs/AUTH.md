@@ -4,7 +4,7 @@
 
 1. **Register / login** (`POST /api/auth/register`, `/login`): the server validates input, hashes the password (scrypt) or verifies it, creates a session and sets the `fv_session` cookie.
 2. **Session**: the cookie holds a random 256-bit token. The database stores only `SHA-256(token)` in `sessions`, so a database leak cannot be replayed as logins. Sessions expire after `SESSION_TTL_DAYS` (default 7) and are purged hourly.
-3. **Protected routes** use the `requireAuth` middleware (`backend/src/middleware/auth.js`). Every future route that touches user data must use it and scope queries by `req.user.id`.
+3. **Protected routes** use the `requireAuth` middleware (`backend/src/middleware/auth.js`). Every route that touches user data uses it and scopes queries by `req.user.id`.
 4. **Frontend**: protected pages call `requireLogin()`, which redirects to `/login.html?next=...` when logged out. The server is the real gate; the redirect is for usability.
 
 ## API
@@ -13,11 +13,12 @@ All bodies are JSON. Errors: `{ "error": { "code", "message", "details?" } }`. V
 
 | Method and path | Auth | Purpose |
 |---|---|---|
-| `POST /api/auth/register` `{ fullName, email, password }` | no | Create account, seed default categories, log in. `201`; `409` if the email exists |
+| `POST /api/auth/register` `{ fullName, email, password, currency? }` | no | Create account (currency defaults to INR), seed default categories, log in. `201`; `409` if the email exists |
 | `POST /api/auth/login` `{ email, password }` | no | Log in. `401 INVALID_CREDENTIALS` (same message for unknown email and wrong password) |
 | `POST /api/auth/logout` | no | End the session and clear the cookie. Always `200` |
 | `GET /api/auth/session` | no | `{ user }` or `{ user: null }`; always `200` so pages can check quietly |
 | `PATCH /api/auth/profile` `{ fullName }` | yes | Update name |
+| `PATCH /api/auth/currency` `{ currency }` | yes | Change the display currency (INR, USD, EUR, GBP, CAD, AUD, JPY). Amounts are not converted |
 | `POST /api/auth/change-password` `{ currentPassword, newPassword }` | yes | Change password; signs out all other devices |
 | `DELETE /api/auth/account` `{ password }` | yes | Permanently delete the user and all their data |
 | `GET /api/health` | no | Liveness + database status |
@@ -34,7 +35,7 @@ All bodies are JSON. Errors: `{ "error": { "code", "message", "details?" } }`. V
 | Session fixation | Every login issues a new token and deletes any pre-login session. |
 | Stale access | Changing the password signs out other devices; deleting the account cascades to sessions. |
 | Open redirect | `?next=` accepts same-site paths only (unit tested). |
-| Oversized / odd input | Password max 128 chars; JSON body max 100 KB; non-string values rejected, not coerced. |
+| Oversized / odd input | Password max 128 chars; JSON body max 256 KB; non-string values rejected, not coerced. |
 | Cached secrets | `Cache-Control: no-store` on every API response; HSTS in production. |
 | Transport | Cookie gets `Secure` when `NODE_ENV=production`. Deploy behind HTTPS and set `TRUST_PROXY=true` if using a reverse proxy. |
 

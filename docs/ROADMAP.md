@@ -17,3 +17,5 @@
 | 12 | Financial health score and reporting | Done |
 | 13 | Testing, security, responsiveness, deployment | Done |
 | 14 | Multi-currency mode (tax tool India-only), added at the user's request | Done |
+| 15 | Homepage and app redesign, owner-supplied branding | Done |
+| 16 | Public release preparation: docs, screenshots, security review, CI | Done |
