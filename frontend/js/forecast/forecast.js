@@ -2,7 +2,7 @@
 import { qs, el } from '../core/dom.js';
 import { api, ApiError } from '../core/api.js';
 import { formatCurrency, formatDate } from '../core/format.js';
-import { applyChartTheme, chartPalette } from '../core/chartTheme.js';
+import { applyChartTheme, chartPalette, withAlpha } from '../core/chartTheme.js';
 import { requireLogin } from '../core/auth.js';
 import { renderSidebar, initDrawer } from '../ui/appShell.js';
 
@@ -62,7 +62,7 @@ function renderChart(f) {
       labels,
       datasets: [
         { type: 'bar', label: 'Recorded spending', data: actual, backgroundColor: c1, borderRadius: 4, order: 3 },
-        { type: 'bar', label: 'Projected spending (estimate)', data: projected, backgroundColor: 'rgba(148, 163, 184, 0.18)', borderColor: c2, borderWidth: 2, borderDash: [5, 4], borderRadius: 4, order: 2 },
+        { type: 'bar', label: 'Projected spending (estimate)', data: projected, backgroundColor: withAlpha(c2, 0.14), borderColor: c2, borderWidth: 2, borderDash: [5, 4], borderRadius: 4, order: 2 },
         { type: 'line', label: 'Likely range, high', data: high, borderColor: c3, borderDash: [2, 4], pointRadius: 3, borderWidth: 1.5, fill: false, order: 1 },
         { type: 'line', label: 'Likely range, low', data: low, borderColor: c3, borderDash: [2, 4], pointRadius: 3, borderWidth: 1.5, fill: false, order: 1 },
       ],

@@ -12,18 +12,17 @@
 .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .grid--auto { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 
-/* Sticky glass site header (public pages) */
+/* Sticky site header (public pages) */
 .site-header {
   position: sticky; top: 0; z-index: 50; height: var(--header-h);
-  background: var(--glass); backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: var(--bg-0);
   border-bottom: 1px solid var(--border);
 }
 .site-header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); }
 .nav { display: flex; align-items: center; gap: var(--sp-5); }
 .nav a { color: var(--text-2); font-size: var(--fs-sm); font-weight: 500; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--text-1); text-decoration: none; }
-.nav a.btn--primary, .nav a.btn--primary:hover { color: #fff; }
+.nav a.btn--primary, .nav a.btn--primary:hover { color: var(--accent-ink); }
 .btn.nav-toggle { display: none; }
 
 .site-footer { border-top: 1px solid var(--border); padding-block: var(--sp-6); color: var(--text-3); font-size: var(--fs-sm); }

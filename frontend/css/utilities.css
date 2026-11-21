@@ -3,9 +3,9 @@
 .text-muted { color: var(--text-3); }
 .text-positive { color: var(--positive); }
 .text-negative { color: var(--negative); }
-.text-gradient { background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.text-gradient { color: var(--accent); }
 .mt-0 { margin-top: 0; } .mt-4 { margin-top: var(--sp-4); } .mt-6 { margin-top: var(--sp-6); }
 .mb-0 { margin-bottom: 0; } .mb-4 { margin-bottom: var(--sp-4); } .mb-6 { margin-bottom: var(--sp-6); }
-.eyebrow { display: inline-block; font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: var(--sp-3); }
+.eyebrow { display: inline-block; font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--sp-3); }
 .lead { font-size: var(--fs-lg); color: var(--text-2); max-width: 60ch; }
 .hidden { display: none !important; }

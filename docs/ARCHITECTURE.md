@@ -60,7 +60,8 @@ JSON only. Errors are `{ "error": { "code", "message", "details?" } }`; validati
 - **Shared JS:** `js/core/` (API client, auth helpers, formatting per currency, DOM helpers, chart theme) and `js/ui/` (app shell and sidebar, dialogs, record forms, navigation).
 - **CSS layers:** `tokens.css` (every colour, size and timing) → `base.css` → `layout.css` → `components.css` → `utilities.css`; then `home.css` / `landing.css` for public pages, or `dashboard.css` → `app.css` (shared app theme) → page files for signed-in pages. Class names follow `block__element--modifier`.
 - **Charts:** Chart.js 4, served from `node_modules` at `/vendor/chart.js` (no CDN), themed once in `js/core/chartTheme.js`.
-- **Branding:** the wordmark and icons in `assets/brand/` are the owner's supplied artwork; `assets/favicon.svg` is the browser-tab icon.
+- **Design system:** Midnight Ink + Mint, defined in `tokens.css`. See [DESIGN.md](DESIGN.md) for the palette, colour roles and contrast.
+- **Branding:** the wordmark and icons in `assets/brand/` are the owner's supplied artwork, recoloured to the palette (originals kept as `*-original.png`); `assets/favicon.svg` is the browser-tab icon.
 
 ## Key decisions
 | Decision | Why |

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="frontend/assets/brand/finvista-logo-original.png" alt="FinVista" width="720">
+  <img src="frontend/assets/brand/finvista-logo.png" alt="FinVista" width="720">
 </p>
 
 <h3 align="center">See your financial future, not just your past.</h3>
@@ -73,7 +73,7 @@
 
 1. **Clone and install**
    ```bash
-   git clone https://github.com/<siddhphegade9-design>/finvista.git
+   git clone https://github.com/<your-username>/finvista.git
    cd finvista
    npm install
    ```
@@ -154,7 +154,7 @@ Dockerfile · docker-compose.yml · render.yaml
 ## Documentation
 | Topic | Docs |
 |---|---|
-| Overview | [Architecture](docs/ARCHITECTURE.md) · [Database](docs/DATABASE.md) · [Roadmap](docs/ROADMAP.md) |
+| Overview | [Architecture](docs/ARCHITECTURE.md) · [Design system](docs/DESIGN.md) · [Database](docs/DATABASE.md) · [Roadmap](docs/ROADMAP.md) |
 | Operations | [Deployment](docs/DEPLOYMENT.md) · [Security](docs/SECURITY.md) · [Testing](docs/TESTING.md) · [Authentication](docs/AUTH.md) |
 | Features | [Transactions](docs/TRANSACTIONS.md) · [Categorisation](docs/CATEGORIZATION.md) · [Analytics](docs/ANALYTICS.md) · [Forecasting](docs/FORECASTING.md) · [Budgets](docs/BUDGETS.md) · [Investments](docs/INVESTMENTS.md) · [AI advisor](docs/ADVISOR.md) · [Tax](docs/TAX.md) · [Reports](docs/REPORTS.md) · [Currency](docs/CURRENCY.md) |
 
@@ -172,7 +172,4 @@ FinVista is a planning tool. Forecasts, simulations, tax figures and AI answers 
 [Chart.js](https://www.chartjs.org/) (MIT) · [Inter](https://rsms.me/inter/) typeface (SIL Open Font License) · [Groq](https://groq.com/) for the free inference API.
 
 ## License
-
-Copyright © 2026 FinVista. All rights reserved.
-
-FinVista is proprietary software. No open-source license has been granted. No permission is granted to copy, modify, distribute, or commercially use this software without prior written permission from the copyright owner.
+Copyright © 2026 the FinVista author. All rights reserved. No open-source licence has been granted yet.

@@ -12,7 +12,7 @@
 .tax-verdict { margin-bottom: var(--sp-4); }
 .tax-verdict strong { color: var(--text-1); }
 .tax-regimes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-4); }
-.tax-regime[data-better="true"] { border-color: rgba(34, 211, 238, 0.5); }
+.tax-regime[data-better="true"] { border-color: var(--accent-line); }
 .tax-regime__total { font-size: var(--fs-xl, 1.75rem); font-weight: 700; color: var(--text-1); margin: var(--sp-2) 0; }
 .tax-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
 .tax-table td { padding: var(--sp-2) 0; border-top: 1px solid var(--border); color: var(--text-2); vertical-align: top; }

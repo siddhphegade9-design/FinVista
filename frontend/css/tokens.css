@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FinVista design tokens - single source of truth for the design system.
+   FinVista design tokens: Midnight Ink + Mint. Single source of truth.
    Every colour, size, radius and timing used elsewhere comes from here.
    ========================================================================== */
 
@@ -24,49 +24,73 @@
 :root {
   color-scheme: dark;
 
-  /* --- Surfaces: deep navy / charcoal ---------------------------------- */
-  --bg-0: #070b16;            /* page background */
-  --bg-1: #0b1120;            /* sidebar, header */
-  --bg-2: #101828;            /* cards */
-  --bg-3: #172033;            /* raised / hover */
-  --border: rgba(148, 163, 184, 0.14);
-  --border-strong: rgba(148, 163, 184, 0.28);
-  --glass: rgba(16, 24, 40, 0.62);
+  /* --- Brand palette: Midnight Ink + Mint ------------------------------
+     The five official colours. Everything below is derived from them.  */
+  --ink: #111C24;             /* Midnight Ink: backgrounds, navigation */
+  --ivory: #F5F2EA;           /* Warm Ivory: primary text, light surfaces */
+  --mint: #A8E6C1;            /* Soft Mint: primary actions, positive, active */
+  --slate: #52616A;           /* Slate: borders, dividers, muted elements */
+  --gold: #D5A66F;            /* Muted Gold: subtle highlights, warnings */
+  /* RGB channels, so translucent tints stay on-palette: rgba(var(--mint-rgb), .12) */
+  --ink-rgb: 17, 28, 36;
+  --ink-deep-rgb: 9, 15, 20;
+  --ivory-rgb: 245, 242, 234;
+  --mint-rgb: 168, 230, 193;
+  --slate-rgb: 82, 97, 106;
+  --gold-rgb: 213, 166, 111;
+  /* Tonal steps of the brand colours (same hue, different lightness). */
+  --mint-hover: #BFEED2;
+  --mint-deep: #7DB896;
+  --slate-light: #A9B4B8;
 
-  /* --- Text ------------------------------------------------------------- */
-  --text-1: #f1f5f9;
-  --text-2: #aab6c8;
-  --text-3: #7c8aa0;
+  /* --- Surfaces: ink, stepping lighter for cards and raised elements --- */
+  --bg-0: var(--ink);         /* page background */
+  --bg-1: #0D161C;            /* sidebar, header (a shade deeper than the page) */
+  --bg-2: #16232C;            /* cards, panels */
+  --bg-3: #1E2D37;            /* raised, hover, inputs */
+  --surface-rgb: 22, 35, 44;
+  --border: rgba(var(--ivory-rgb), 0.08);
+  --border-strong: rgba(var(--ivory-rgb), 0.15);
 
-  /* --- Accents: purple + cyan ------------------------------------------ */
-  --purple-400: #a78bfa;
-  --purple-500: #8b5cf6;
-  --purple-600: #7c3aed;
-  --cyan-400: #22d3ee;
-  --cyan-500: #06b6d4;
-  --accent-gradient: linear-gradient(135deg, var(--purple-500), var(--cyan-500));
+  /* --- Text (slate tints keep secondary text above WCAG AA on ink) ------ */
+  --text-1: var(--ivory);     /* 15.4:1 on ink */
+  --text-2: #B3BCBE;          /*  9.0:1 on ink */
+  --text-3: #8B989F;          /*  5.8:1 on ink, 5.3:1 on cards */
 
-  /* --- Semantic --------------------------------------------------------- */
-  --positive: #34d399;
-  --negative: #fb7185;
-  --warning: #fbbf24;
-  --info: var(--cyan-400);
-  --positive-bg: rgba(52, 211, 153, 0.12);
-  --negative-bg: rgba(251, 113, 133, 0.12);
-  --warning-bg: rgba(251, 191, 36, 0.12);
-  --info-bg: rgba(34, 211, 238, 0.12);
+  /* --- Accent roles ------------------------------------------------------ */
+  --accent: var(--mint);
+  --accent-hover: var(--mint-hover);
+  --accent-ink: var(--ink);   /* text on a mint fill: 12.1:1 */
+  --accent-soft: rgba(var(--mint-rgb), 0.12);
+  --accent-line: rgba(var(--mint-rgb), 0.38);
+  --highlight: var(--gold);
+  --highlight-soft: rgba(var(--gold-rgb), 0.14);
 
-  /* --- Chart palette (also read by js/core/chartTheme.js) -------------- */
-  --chart-1: #8b5cf6;
-  --chart-2: #22d3ee;
-  --chart-3: #34d399;
-  --chart-4: #fbbf24;
-  --chart-5: #fb7185;
-  --chart-6: #60a5fa;
-  --chart-7: #f472b6;
-  --chart-8: #94a3b8;
+  /* --- Semantic ---------------------------------------------------------
+     Negative needs a red for meaning; it is a muted terracotta that sits
+     with gold and ivory rather than a saturated alarm red. */
+  --positive: var(--mint);
+  --negative: #E5978A;
+  --negative-rgb: 229, 151, 138;
+  --warning: var(--gold);
+  --info: var(--slate-light);
+  --positive-bg: rgba(var(--mint-rgb), 0.12);
+  --negative-bg: rgba(var(--negative-rgb), 0.12);
+  --warning-bg: rgba(var(--gold-rgb), 0.13);
+  --info-bg: rgba(var(--ivory-rgb), 0.06);
 
-  /* --- Typography ------------------------------------------------------- */
+  /* --- Chart palette (also read by js/core/chartTheme.js) ---------------
+     Brand colours first, then tonal steps; all readable on ink. */
+  --chart-1: #A8E6C1;         /* mint */
+  --chart-2: #D5A66F;         /* gold */
+  --chart-3: #A9B4B8;         /* slate tint */
+  --chart-4: #E5978A;         /* terracotta */
+  --chart-5: #6FAE8B;         /* deep mint */
+  --chart-6: #EAD3AE;         /* pale gold */
+  --chart-7: #6F8792;         /* mid slate */
+  --chart-8: #D9D5CA;         /* dim ivory */
+
+/* --- Typography ------------------------------------------------------- */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
   --fs-xs: 0.75rem;
@@ -92,13 +116,12 @@
   --sp-9: 7rem;
 
   /* --- Shape, depth, motion -------------------------------------------- */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
-  --shadow-glow: 0 0 0 1px rgba(139, 92, 246, 0.35), 0 8px 32px rgba(139, 92, 246, 0.18);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 32px -16px rgba(0, 0, 0, 0.55);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur-fast: 140ms;
   --dur-base: 240ms;
@@ -107,5 +130,5 @@
   --container: 1200px;
   --sidebar-w: 260px;
   --header-h: 64px;
-  --focus-ring: 0 0 0 3px rgba(34, 211, 238, 0.45);
+  --focus-ring: 0 0 0 3px rgba(var(--mint-rgb), 0.45);
 }

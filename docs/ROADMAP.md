@@ -19,3 +19,4 @@
 | 14 | Multi-currency mode (tax tool India-only), added at the user's request | Done |
 | 15 | Homepage and app redesign, owner-supplied branding | Done |
 | 16 | Public release preparation: docs, screenshots, security review, CI | Done |
+| 17 | Midnight Ink + Mint colour system across every page; logo recoloured | Done |

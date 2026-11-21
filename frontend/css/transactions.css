@@ -28,8 +28,8 @@
 .seg { display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border-strong); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-1); }
 .seg label { display: block; text-align: center; padding: 0.55rem 1rem; cursor: pointer; font-size: var(--fs-sm); font-weight: 600; color: var(--text-2); }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
-.seg input:checked + span { color: #fff; }
-.seg label:has(input:checked) { background: var(--accent-gradient); color: #fff; }
+.seg input:checked + span { color: var(--accent-ink); }
+.seg label:has(input:checked) { background: var(--accent); color: var(--accent-ink); }
 .seg label:has(input:focus-visible) { box-shadow: inset var(--focus-ring); }
 .form-error { margin-bottom: var(--sp-4); }
 

@@ -2,7 +2,7 @@
 import { qs, el } from '../core/dom.js';
 import { api, ApiError } from '../core/api.js';
 import { formatCurrency, formatDate, formatPercent } from '../core/format.js';
-import { applyChartTheme, chartPalette } from '../core/chartTheme.js';
+import { applyChartTheme, chartPalette, chartColors, withAlpha } from '../core/chartTheme.js';
 import { requireLogin } from '../core/auth.js';
 import { renderSidebar, initDrawer } from '../ui/appShell.js';
 import { PRESETS, rangeForPreset, checkCustomRange, monthName } from './ranges.js';
@@ -67,8 +67,8 @@ function renderCharts(a) {
       data: {
         labels,
         datasets: [
-          { type: 'bar', label: 'Income', data: a.monthly.map((m) => m.income), backgroundColor: palette[2], borderRadius: 6, maxBarThickness: 26, order: 2 },
-          { type: 'bar', label: 'Expenses', data: a.monthly.map((m) => m.expenses), backgroundColor: palette[4], borderRadius: 6, maxBarThickness: 26, order: 2 },
+          { type: 'bar', label: 'Income', data: a.monthly.map((m) => m.income), backgroundColor: chartColors().positive, borderRadius: 3, maxBarThickness: 26, order: 2 },
+          { type: 'bar', label: 'Expenses', data: a.monthly.map((m) => m.expenses), backgroundColor: chartColors().negative, borderRadius: 3, maxBarThickness: 26, order: 2 },
           { type: 'line', label: 'Net', data: a.monthly.map((m) => m.net), borderColor: palette[1], backgroundColor: palette[1], tension: 0.3, pointRadius: 3, order: 1 },
         ],
       },
@@ -80,7 +80,7 @@ function renderCharts(a) {
   if (anyData) {
     upsertChart('cum', '#chart-cum', {
       type: 'line',
-      data: { labels, datasets: [{ label: 'Running net savings', data: a.cumulativeNet.map((m) => m.value), borderColor: palette[0], backgroundColor: 'rgba(139, 92, 246, 0.16)', fill: true, tension: 0.3, pointRadius: 3 }] },
+      data: { labels, datasets: [{ label: 'Running net savings', data: a.cumulativeNet.map((m) => m.value), borderColor: palette[0], backgroundColor: withAlpha(palette[0], 0.14), fill: true, tension: 0.3, pointRadius: 3 }] },
       options: { plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } } } },
     });
   }
@@ -117,7 +117,7 @@ function renderCharts(a) {
   if (hasWeek) {
     upsertChart('week', '#chart-week', {
       type: 'bar',
-      data: { labels: a.weekdays.map((d) => d.name), datasets: [{ label: 'Expenses', data: a.weekdays.map((d) => d.expenses), backgroundColor: palette[3], borderRadius: 6, maxBarThickness: 34 }] },
+      data: { labels: a.weekdays.map((d) => d.name), datasets: [{ label: 'Expenses', data: a.weekdays.map((d) => d.expenses), backgroundColor: chartColors().negative, borderRadius: 3, maxBarThickness: 34 }] },
       options: { plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true } } },
     });
   }

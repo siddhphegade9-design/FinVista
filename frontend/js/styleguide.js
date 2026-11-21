@@ -7,7 +7,7 @@ import { applyChartTheme, chartPalette } from './core/chartTheme.js';
 import { confirmDialog } from './ui/modal.js';
 
 // Colour swatches, labelled with the CSS variable that defines them.
-const SWATCHES = ['--bg-0', '--bg-2', '--bg-3', '--purple-500', '--cyan-500', '--positive', '--negative', '--warning'];
+const SWATCHES = ['--ink', '--ivory', '--mint', '--slate', '--gold', '--bg-2', '--bg-3', '--negative'];
 const swatchHost = qs('#swatches');
 for (const name of SWATCHES) {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();

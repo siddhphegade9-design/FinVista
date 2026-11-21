@@ -11,13 +11,24 @@ export function chartPalette() {
   return Array.from({ length: 8 }, (_, i) => css(`--chart-${i + 1}`));
 }
 
+/** Meaning-bearing colours, so income/expense never depend on palette order. */
+export function chartColors() {
+  return { positive: css('--positive'), negative: css('--negative'), estimate: css('--highlight'), muted: css('--slate-light') };
+}
+
+/** Same colour at a given opacity, e.g. for filled areas. Accepts #rrggbb. */
+export function withAlpha(hex, alpha) {
+  const h = hex.replace('#', '');
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 /** Call once per page after the Chart.js script has loaded. */
 export function applyChartTheme(Chart) {
   const d = Chart.defaults;
   d.font.family = css('--font-sans');
   d.font.size = 12;
   d.color = css('--text-2');
-  d.borderColor = 'rgba(148, 163, 184, 0.12)';
   d.maintainAspectRatio = false;
   d.responsive = true;
   d.plugins.legend.labels.usePointStyle = true;
@@ -33,23 +44,24 @@ export function applyChartTheme(Chart) {
     return `${ctx.dataset.label ?? ctx.label}: ${formatCurrency(v)}`;
   };
   if (d.scales?.linear) d.scales.linear.ticks.callback = (v) => formatCompact(v);
-  // Softer, modern defaults shared by every chart (pages can still override).
-  d.borderColor = 'rgba(148, 163, 184, 0.08)';
-  d.plugins.tooltip.backgroundColor = 'rgba(16, 24, 40, 0.95)';
-  d.plugins.tooltip.cornerRadius = 12;
+  // Quiet, editorial defaults shared by every chart (pages can still override).
+  d.borderColor = withAlpha(css('--ivory'), 0.07);   // gridlines
+  d.scale.ticks.color = css('--text-3');
+  d.plugins.legend.labels.color = css('--text-2');
+  d.plugins.tooltip.cornerRadius = 6;
   d.plugins.tooltip.padding = 12;
   d.plugins.tooltip.boxPadding = 4;
   d.plugins.tooltip.usePointStyle = true;
   d.plugins.legend.labels.padding = 16;
-  d.elements.bar.borderRadius = 8;
+  d.elements.bar.borderRadius = 3;
   d.elements.bar.borderSkipped = false;
   d.elements.line.tension = 0.35;
-  d.elements.line.borderWidth = 2.5;
+  d.elements.line.borderWidth = 2;
   d.elements.point.radius = 0;
   d.elements.point.hoverRadius = 5;
   d.elements.point.hitRadius = 12;
   d.elements.arc.borderWidth = 2;
-  d.elements.arc.borderColor = '#0d1323';
+  d.elements.arc.borderColor = css('--bg-2');   // slice separators match the card
   d.elements.arc.hoverOffset = 6;
   d.interaction = { mode: 'index', intersect: false };
   d.animation = { duration: 700, easing: 'easeOutQuart' };

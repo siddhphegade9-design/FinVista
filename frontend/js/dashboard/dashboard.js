@@ -1,7 +1,7 @@
 /** Dashboard page controller: loads data, calls metrics.js, renders the DOM and charts. */
 import { qs, el } from '../core/dom.js';
 import { formatCurrency, formatDateShort, formatPercent } from '../core/format.js';
-import { applyChartTheme, chartPalette } from '../core/chartTheme.js';
+import { applyChartTheme, chartPalette, chartColors } from '../core/chartTheme.js';
 import { renderSidebar, initDrawer } from '../ui/appShell.js';
 import { requireLogin, getSessionUser } from '../core/auth.js';
 import { loadDashboardData, loadBudgets } from './dataSource.js';
@@ -85,6 +85,7 @@ function toggleChart(wrapId, emptyId, hasData) {
 function renderCharts() {
   if (!window.Chart) return;
   const palette = chartPalette();
+  const sem = chartColors();
   const series = monthlySeries(state.data.transactions, state.month, 6);
   const hasSeries = series.some((m) => m.income > 0 || m.expenses > 0);
   toggleChart('#bar-wrap', '#bar-empty', hasSeries);
@@ -94,8 +95,8 @@ function renderCharts() {
       data: {
         labels: series.map((m) => monthLabel(m.month, { short: true })),
         datasets: [
-          { label: 'Income', data: series.map((m) => m.income), backgroundColor: palette[2], borderRadius: 6, maxBarThickness: 28 },
-          { label: 'Expenses', data: series.map((m) => m.expenses), backgroundColor: palette[4], borderRadius: 6, maxBarThickness: 28 },
+          { label: 'Income', data: series.map((m) => m.income), backgroundColor: sem.positive, borderRadius: 3, maxBarThickness: 28 },
+          { label: 'Expenses', data: series.map((m) => m.expenses), backgroundColor: sem.negative, borderRadius: 3, maxBarThickness: 28 },
         ],
       },
       options: { scales: { x: { grid: { display: false } }, y: { beginAtZero: true } }, plugins: { legend: { position: 'bottom' } } },
